@@ -11,7 +11,7 @@ import {
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { QuoteOpen, QuoteClose } from './components/quoteIcons';
+import { QuoteOpen, QuoteClose } from './components/QuoteIcons';
 import Modal from './components/Modal';
 
 const memyselfandi = '/000001.JPG';
@@ -120,21 +120,27 @@ const Home: FC = () => {
             </div>
             <div className="col-span-2 mb-0 mt-2">
               <p className="text-lg text-gray-900">
-                If you're building a team of developers, or if you're a CTO,
-                CEO, business engineer, check out my CV and a detailed file on
-                my technical achievements for a comprehensive overview of my
-                work:
+                If you&apos;re building a team of developers, or if you&apos;re
+                a CTO, CEO, business engineer, check out my CV and a detailed
+                file on my technical achievements for a comprehensive overview
+                of my work:
               </p>
             </div>
             <div className="flex items-center space-x-3">
-            <CloudDownload className="text-blue-normal w-6 h-6" />
-              <button onClick={() => openModal('cv')} className="text-lg text-link no-underline">
+              <CloudDownload className="text-blue-normal w-6 h-6" />
+              <button
+                onClick={() => openModal('cv')}
+                className="text-lg text-link no-underline"
+              >
                 Curriculum Vitae
               </button>
             </div>
             <div className="flex items-center space-x-3">
-            <CloudDownload className="text-blue-normal w-6 h-6" />
-              <button onClick={() => openModal('technicalFile')} className="text-lg text-link no-underlinee">
+              <CloudDownload className="text-blue-normal w-6 h-6" />
+              <button
+                onClick={() => openModal('technicalFile')}
+                className="text-lg text-link no-underlinee"
+              >
                 Technical File
               </button>
             </div>
@@ -225,8 +231,8 @@ const Home: FC = () => {
             transition={{ duration: 0.5 }}
             className="absolute top-[20px] right-[-10px] md:top-[20px] md:right-[-40px] transform md:translate-x-2 -translate-y-2 bg-blue-normal-trans text-white p-4 rounded-lg shadow-xl w-[220px] text-center"
           >
-            <div className="relative mb-4">
-              <QuoteOpen color="#ffffff" className="absolute top-0 left-0" />
+            <div className="flex items-start justify-start mb-4">
+              <QuoteOpen color="#ffffff" />
             </div>
             <p className="text-lg italic mb-4">
               {testimonials[currentTestimonial].text}
@@ -237,11 +243,8 @@ const Home: FC = () => {
             <p className="text-sm text-gray-200">
               {testimonials[currentTestimonial].title}
             </p>
-            <div className="relative flex justify-end mt-4">
-              <QuoteClose
-                color="#ffffff"
-                className="absolute bottom-0 right-0"
-              />
+            <div className="flex items-end justify-end mt-4">
+              <QuoteClose color="#ffffff" />
             </div>
           </motion.div>
         </div>

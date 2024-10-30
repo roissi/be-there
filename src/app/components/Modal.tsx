@@ -2,7 +2,10 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const Modal: FC<{ onClose: () => void, type: string }> = ({ onClose, type }) => {
+const Modal: FC<{ onClose: () => void; type: string }> = ({
+  onClose,
+  type,
+}) => {
   const isCv = type === 'cv';
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -29,14 +32,24 @@ const Modal: FC<{ onClose: () => void, type: string }> = ({ onClose, type }) => 
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-        <h2 className="text-lg font-bold mb-4">{isCv ? "Curriculum Vitae" : "Technical File"}</h2>
+        <h2 className="text-lg font-bold mb-4">
+          {isCv ? 'Curriculum Vitae' : 'Technical File'}
+        </h2>
         <div className="flex flex-col space-y-4">
-          <Link href={isCv ? "/CV_EN_CyrilDeGraeve.pdf" : "/TekFile_EN.pdf"} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={isCv ? '/CV_EN_CyrilDeGraeve.pdf' : '/TekFile_EN.pdf'}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="w-full bg-blue-light text-gray-700 py-2 rounded hover:bg-blue-light-trans">
               EN version
             </button>
           </Link>
-          <Link href={isCv ? "/CV_FR_CyrilDeGraeve.pdf" : "/TekFile_FR.pdf"} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={isCv ? '/CV_FR_CyrilDeGraeve.pdf' : '/TekFile_FR.pdf'}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="w-full bg-blue-light text-gray-700 py-2 rounded hover:bg-blue-light-trans">
               FR version
             </button>
