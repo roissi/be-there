@@ -6,7 +6,54 @@ const Modal: FC<{ onClose: () => void; type: string }> = ({
   onClose,
   type,
 }) => {
-  const isCv = type === 'cv';
+  const getTitle = () => {
+    switch (type) {
+      case 'cv':
+        return 'Curriculum Vitae';
+      case 'technicalFile':
+        return 'Technical File';
+      case 'offers':
+        return 'My Offers';
+      case 'portfolio':
+        return 'Portfolio';
+      default:
+        return 'Information';
+    }
+  };
+
+  const getLinks = () => {
+    switch (type) {
+      case 'cv':
+        return [
+          { label: 'EN version', href: '/CV_EN_CyrilDeGraeve.pdf' },
+          { label: 'FR version', href: '/CV_FR_CyrilDeGraeve.pdf' },
+        ];
+      case 'technicalFile':
+        return [
+          { label: 'EN version', href: '/TekFile_EN.pdf' },
+          { label: 'FR version', href: '/TekFile_FR.pdf' },
+        ];
+      case 'offers':
+        return [
+          {
+            label: 'EN version',
+            href: 'https://hyper-free.cyrildegraeve.dev/en',
+          },
+          {
+            label: 'FR version',
+            href: 'https://hyper-free.cyrildegraeve.dev/',
+          },
+        ];
+      case 'portfolio':
+        return [
+          { label: 'EN version', href: 'https://www.cyrildegraeve.dev/en' },
+          { label: 'FR version', href: 'https://www.cyrildegraeve.dev/' },
+        ];
+      default:
+        return [];
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <motion.div
@@ -32,28 +79,20 @@ const Modal: FC<{ onClose: () => void; type: string }> = ({
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-        <h2 className="text-lg font-bold mb-4">
-          {isCv ? 'Curriculum Vitae' : 'Technical File'}
-        </h2>
+        <h2 className="text-lg font-bold mb-4">{getTitle()}</h2>
         <div className="flex flex-col space-y-4">
-          <Link
-            href={isCv ? '/CV_EN_CyrilDeGraeve.pdf' : '/TekFile_EN.pdf'}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="w-full bg-blue-light text-gray-700 py-2 rounded hover:bg-blue-light-trans">
-              EN version
-            </button>
-          </Link>
-          <Link
-            href={isCv ? '/CV_FR_CyrilDeGraeve.pdf' : '/TekFile_FR.pdf'}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="w-full bg-blue-light text-gray-700 py-2 rounded hover:bg-blue-light-trans">
-              FR version
-            </button>
-          </Link>
+          {getLinks().map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="w-full bg-blue-light text-link no-underline py-2">
+                {link.label}
+              </button>
+            </Link>
+          ))}
         </div>
       </motion.div>
     </div>
