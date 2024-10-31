@@ -4,6 +4,5 @@ Be there.
 
 Build an amazing website!
 
-=> bethere.cyrildegraeve.dev
-
-=> contact@cyrildegraeve.dev
+🚀 [bethere.cyrildegraeve.dev](bethere.cyrildegraeve.dev)<br/>
+📝 contact@cyrildegraeve.dev
