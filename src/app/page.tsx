@@ -24,6 +24,11 @@ const testimonials = [
     title: 'Event photographer',
   },
   {
+    text: 'Very good contact with Cyril, very professional. Good support in determining the technical, editorial & visual choices for my website. Very satisfied with the work done.',
+    author: 'Josselin G.',
+    title: 'CEO of a service company',
+  },
+  {
     text: 'I asked Cyril to program a Back Office for me so that I could manage my content independently. The result is remarkable, I am more than satisfied and delighted to have used his services once again!',
     author: 'Filo S.',
     title: 'Editor',
@@ -98,25 +103,21 @@ const Home: FC = () => {
             </div>
             <div className="flex items-center space-x-3">
               <Link2 className="text-blue-normal w-6 h-6" />
-              <Link
-                href="https://hyper-free.cyrildegraeve.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openModal('offers')}
+                className="text-lg text-link no-underline"
               >
-                <span className="text-lg text-link">
-                  My offers (Hyper-Free)
-                </span>
-              </Link>
+                My offers (Hyper-Free)
+              </button>
             </div>
             <div className="flex items-center space-x-3">
               <Link2 className="text-blue-normal w-6 h-6" />
-              <Link
-                href="https://www.cyrildegraeve.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openModal('portfolio')}
+                className="text-lg text-link no-underline"
               >
-                <span className="text-lg text-link">Portfolio</span>
-              </Link>
+                Portfolio
+              </button>
             </div>
             <div className="col-span-2 mb-0 mt-2">
               <p className="text-lg text-gray-900">
@@ -139,7 +140,7 @@ const Home: FC = () => {
               <CloudDownload className="text-blue-normal w-6 h-6" />
               <button
                 onClick={() => openModal('technicalFile')}
-                className="text-lg text-link no-underlinee"
+                className="text-lg text-link no-underline"
               >
                 Technical File
               </button>
@@ -177,7 +178,7 @@ const Home: FC = () => {
             height={600}
             className="rounded-lg w-full h-auto"
           />
-          <p className="text-center text-xl text-gray-700 mt-4 font-semibold">
+          <p className="text-center text-xl text-gray-700 mt-12 xs:mt-4 font-semibold">
             Cyril De Graeve, Fullstack Web & Mobile Developer
           </p>
           <div className="flex items-center justify-center space-x-2 mt-4">
@@ -234,7 +235,7 @@ const Home: FC = () => {
             <div className="flex items-start justify-start mb-4">
               <QuoteOpen color="#ffffff" />
             </div>
-            <p className="text-lg italic mb-4">
+            <p className="text-mds lg:text-lg italic mb-4">
               {testimonials[currentTestimonial].text}
             </p>
             <p className="text-sm mt-4">
