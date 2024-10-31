@@ -178,7 +178,7 @@ const Home: FC = () => {
             className="rounded-lg w-full h-auto"
           />
           <p className="text-center text-xl text-gray-700 mt-4 font-semibold">
-            Cyril De Graeve, Fullstack Web & Mobile Web Developer
+            Cyril De Graeve, Fullstack Web & Mobile Developer
           </p>
           <div className="flex items-center justify-center space-x-2 mt-4">
             <Mail className="text-black w-6 h-6" />
