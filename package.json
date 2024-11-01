@@ -7,14 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "framer-motion": "^11.11.10",
     "lucide-react": "^0.453.0",
-    "next": "15.0.1"
+    "next": "15.0.1",
+    "next-sitemap": "^4.2.3"
   },
   "devDependencies": {
     "@types/node": "^20",
