@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'opengraph.png',
+        url: 'https://bethere.cyrildegraeve.dev/opengraph.png',
         width: 1200,
         height: 630,
         alt: 'Cyril De Graeve - Développeur Fullstack Web & Mobile',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: 'Be There - Build an Amazing Website',
     description:
       'Développeur Fullstack Web & Mobile, Cyril De Graeve vous accompagne pour créer un site ou une appli moderne, performante, et optimisée SEO.',
-    images: ["/opengraph.png"],
+    images: ["https://bethere.cyrildegraeve.dev/opengraph.png"],
   },
   alternates: {
     canonical: 'https://bethere.cyrildegraeve.dev',
