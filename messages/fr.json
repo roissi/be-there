@@ -1,0 +1,46 @@
+{
+  "HomePage": {
+    "intro": "Vous n'êtes plus celui qui parle le mieux de vous. Désormais, c'est Google et l'IA qui racontent votre histoire.",
+    "punchline": "Soyez présent.\nCréez un site Web incroyable !",
+    "package": "Vous êtes indépendant, responsable d'une PME ou directeur marketing ? Découvrez mes compétences, mes références et mes offres :",
+    "offers": "Mes offres (Hyper-Free)",
+    "tjm": "Si vous constituez une équipe de développeurs, ou si vous êtes CTO, CEO, ingénieur d'affaires, consultez mon CV et un dossier détaillé sur mes réalisations techniques pour un aperçu complet de mon travail :",
+    "tekfile": "Dossier technique",
+    "slot": "Réservez un créneau !",
+    "me": "Cyril De Graeve, Développeur Web et Mobile Fullstack",
+    "meetagain": "On peut aussi se voir ici :",
+
+    "testimonials": [
+      {
+        "text": "Cyril est disponible, il fait régulièrement le point sur les avancées et le résultat a dépassé les attentes initiales ! Je recommande vivement ce développeur.",
+        "author": "Emmanuel P.",
+        "title": "Photographe événementiel"
+      },
+      {
+        "text": "Très bon contact avec Cyril, très professionnel. Bon accompagnement dans la détermination des choix techniques, éditoriaux & visuels de mon site. Totalement satisfait du travail effectué.",
+        "author": "Josselin G.",
+        "title": "PDG d'une société de services"
+      },
+      {
+        "text": "J'ai demandé à Cyril de me créer un Back Office afin que je puisse gérer mes contenus en toute autonomie. Le résultat est remarquable, je suis plus que satisfaite et ravie d'avoir fait appel à ses services !",
+        "author": "Filo S.",
+        "title": "Éditeur"
+      },
+      {
+        "text": "Cyril a réussi à insuffler des idées créatives pour me démarquer des autres sites existants. Il respecte les délais, il s'implique et j'étais au courant de toutes les étapes.",
+        "author": "Christel M.",
+        "title": "Coach de carrière"
+      },
+      {
+        "text": "Cyril, très ouvert aux retours, bien organisé et autonome, est une personne avec qui il est agréable de travailler. Nous le recommandons vivement et travaillerons à nouveau avec lui à l'avenir.",
+        "author": "Alejandrina C.",
+        "title": "Responsable d'une ONG"
+      },
+      {
+        "text": "C'est la deuxième mission que je confie à Cyril. Il avait repris le Front-end de mon site et il vient de reprendre également tout le Back-end. Ses compétences fullstack sont incroyables !",
+        "author": "Filo S.",
+        "title": "Éditeur"
+      }
+    ]
+  }
+}
