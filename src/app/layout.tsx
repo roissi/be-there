@@ -1,3 +1,5 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -38,21 +40,30 @@ export const metadata: Metadata = {
     title: 'Be There - Build an Amazing Website',
     description:
       'Développeur Fullstack Web & Mobile, Cyril De Graeve vous accompagne pour créer un site ou une appli moderne, performante, et optimisée SEO.',
-    images: ["https://bethere.cyrildegraeve.dev/opengraph.png"],
+    images: ['https://bethere.cyrildegraeve.dev/opengraph.png'],
   },
   alternates: {
     canonical: 'https://bethere.cyrildegraeve.dev',
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const locale = await getLocale();
+
+  // Fournir tous les messages au côté client est la manière la plus simple de commencer
+  const messages = await getMessages();
+
   return (
-    <html lang="fr">
-      <body className="font-figtree antialiased">{children}</body>
+    <html lang={locale}>
+      <body className="font-figtree antialiased">
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
