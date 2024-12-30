@@ -13,6 +13,7 @@
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@supabase/supabase-js": "^2.47.10",
     "framer-motion": "^11.11.10",
     "lucide-react": "^0.453.0",
     "next": "15.0.1",
