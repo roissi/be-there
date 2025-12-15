@@ -1,14 +1,17 @@
+// src/app/movie2025/page.tsx
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-// Déclaration du type Vote
 type Vote = {
   movie_id: number;
   upvotes: number;
   downvotes: number;
 };
+
+const YEAR = 2025;
+const LOCAL_STORAGE_KEY = `votedMovies_${YEAR}_v2`;
 
 const movies = [
   {
@@ -73,35 +76,34 @@ const movies = [
   },
 ];
 
-const CinemaPage = () => {
-  const [votes, setVotes] = useState<Vote[]>([]); // Déclare votes comme un tableau de Vote
-  const [votedMovies, setVotedMovies] = useState<number[]>([]); // Déclare votedMovies comme un tableau de nombres
+export default function CinemaPage() {
+  const [votes, setVotes] = useState<Vote[]>([]);
+  const [votedMovies, setVotedMovies] = useState<number[]>([]);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [activeHover, setActiveHover] = useState<number | null>(null);
 
   useEffect(() => {
-    const LOCAL_STORAGE_KEY = 'votedMovies';
-    const storedVotesString = localStorage.getItem(LOCAL_STORAGE_KEY); // Cela retourne "string | null"
-    const storedVotes = storedVotesString ? JSON.parse(storedVotesString) : []; // Vérifiez si "storedVotesString" n'est pas null
+    const storedVotesString = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const storedVotes = storedVotesString ? JSON.parse(storedVotesString) : [];
     setVotedMovies(storedVotes);
   }, []);
 
   useEffect(() => {
     async function fetchVotes() {
       try {
-        const res = await fetch('/api/votes');
+        const res = await fetch(`/api/votes?year=${YEAR}`);
         if (!res.ok) throw new Error('Erreur lors du chargement des votes');
         const data: Vote[] = await res.json();
-        const mappedVotes = movies.map((movie) => {
-          const voteData = data.find(
-            (vote: Vote) => vote.movie_id === movie.id
-          );
+
+        const mappedVotes: Vote[] = movies.map((movie) => {
+          const voteData = data.find((vote) => vote.movie_id === movie.id);
           return {
             movie_id: movie.id,
-            upvotes: voteData?.upvotes || 0,
-            downvotes: voteData?.downvotes || 0,
+            upvotes: voteData?.upvotes ?? 0,
+            downvotes: voteData?.downvotes ?? 0,
           };
         });
+
         setVotes(mappedVotes);
       } catch (err) {
         if (err instanceof Error) {
@@ -129,9 +131,7 @@ const CinemaPage = () => {
     checkTouchDevice();
 
     const handleResize = () => {
-      if (window.innerWidth > 640) {
-        setActiveHover(null); // Réinitialisez sur les affichages desktop
-      }
+      if (window.innerWidth > 640) setActiveHover(null);
     };
 
     window.addEventListener('resize', handleResize);
@@ -139,12 +139,10 @@ const CinemaPage = () => {
   }, []);
 
   const handleVote = async (movieId: number, type: 'up' | 'down') => {
-    const LOCAL_STORAGE_KEY = 'votedMovies';
     const storedVotes = JSON.parse(
       localStorage.getItem(LOCAL_STORAGE_KEY) || '[]'
     ) as number[];
 
-    // Vérifiez si l'utilisateur a déjà voté pour ce film
     if (storedVotes.includes(movieId)) {
       alert('Tu as déjà voté pour ce film, calme-toi :)');
       return;
@@ -154,26 +152,35 @@ const CinemaPage = () => {
       const res = await fetch('/api/votes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ index: movieId, type }),
+        body: JSON.stringify({ index: movieId, type, year: YEAR }),
       });
 
       if (!res.ok) {
-        const errorData = await res.json();
+        const errorData = await res.json().catch(() => ({}));
         throw new Error(
           `Erreur API: ${res.status} - ${errorData.error || 'Unknown error'}`
         );
       }
 
-      // Ajouter le film dans les votes locaux
-      const updatedVotes = [...storedVotes, movieId];
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedVotes));
-      setVotedMovies(updatedVotes);
+      const updatedVoted = [...storedVotes, movieId];
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedVoted));
+      setVotedMovies(updatedVoted);
 
-      // Recharger les votes après la mise à jour
-      const updatedVotesFromApi = await fetch('/api/votes').then((res) =>
-        res.json()
+      // Re-fetch + remap
+      const updated = await fetch(`/api/votes?year=${YEAR}`).then((r) =>
+        r.json()
       );
-      setVotes(updatedVotesFromApi);
+      const mappedVotes: Vote[] = movies.map((movie) => {
+        const voteData = updated.find(
+          (vote: Vote) => vote.movie_id === movie.id
+        );
+        return {
+          movie_id: movie.id,
+          upvotes: voteData?.upvotes ?? 0,
+          downvotes: voteData?.downvotes ?? 0,
+        };
+      });
+      setVotes(mappedVotes);
     } catch (err) {
       if (err instanceof Error) {
         console.error('Erreur lors de la mise à jour des votes :', err.message);
@@ -187,7 +194,7 @@ const CinemaPage = () => {
   };
 
   const shareUrl = 'https://www.bethere.cyrildegraeve.dev/';
-  const shareText = 'Découvrez le Top 10 Cinéma 2024 de Roissi !';
+  const shareText = 'Découvrez le Top 10 Cinéma 2025 de Roissi !';
 
   return (
     <div className="font-figtree bg-gray-200 min-h-screen flex flex-col">
@@ -198,7 +205,7 @@ const CinemaPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Top 10 Cinéma 2024
+          Top 10 Cinéma 2025
         </motion.h1>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 w-full max-w-6xl mt-16">
@@ -207,6 +214,7 @@ const CinemaPage = () => {
               (vote) => vote.movie_id === movie.id
             ) || { upvotes: 0, downvotes: 0 };
             const hasVoted = votedMovies.includes(movie.id);
+
             return (
               <motion.li
                 key={index}
@@ -216,7 +224,7 @@ const CinemaPage = () => {
                 className="relative bg-white rounded-lg shadow-md hover:shadow-lg transform transition duration-300 ease-in-out"
               >
                 <motion.div
-                  className={`relative w-full h-full group rounded-lg overflow-hidden`}
+                  className="relative w-full h-full group rounded-lg overflow-hidden"
                   onClick={
                     isTouchDevice
                       ? () =>
@@ -274,7 +282,6 @@ const CinemaPage = () => {
                   </motion.div>
                 </motion.div>
 
-                {/* Numéro en pastille stylisée */}
                 {index === 0 ? (
                   <motion.div
                     className="absolute -top-6 left-2 bg-yellow-500 text-black border-4 border-gray-200 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-extrabold shadow-xl"
@@ -323,7 +330,6 @@ const CinemaPage = () => {
             );
           })}
 
-          {/* Texte occupant 2 colonnes sur les écrans larges, à droite */}
           <div className="flex items-center justify-center px-6 py-4 bg-yellow-500 text-black text-center rounded-lg shadow-md col-span-1 sm:col-span-2 lg:col-span-2 lg:row-start-3 lg:col-start-3">
             <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold">
               Tu veux afficher sur les Internets ton Top 10 à toi ?{' '}
@@ -345,7 +351,6 @@ const CinemaPage = () => {
         </ul>
       </div>
 
-      {/* Boutons de partage */}
       <div className="flex flex-col items-center gap-2 mt-4">
         <p className="text-lg font-semibold text-gray-700">
           Si tu veux partager mon travail :
@@ -415,6 +420,4 @@ const CinemaPage = () => {
       </footer>
     </div>
   );
-};
-
-export default CinemaPage;
+}
