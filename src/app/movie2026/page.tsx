@@ -36,27 +36,27 @@ const movies = [
   },
   {
     id: 2,
+    title: 'L’agent secret',
+    director: 'Kleber Mendonça Filho',
+    poster: '/movies/agentsecret.jpg',
+  },
+  {
+    id: 3,
     title: 'Fragments d’un parcours amoureux',
     director: 'Chloé Barreau',
     poster: '/movies/fragments.webp',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Black dog',
     director: 'Guan Hu',
     poster: '/movies/blackdog.webp',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Eddington',
     director: 'Ari Aster',
     poster: '/movies/eddington.webp',
-  },
-  {
-    id: 5,
-    title: 'Les feux sauvages',
-    director: 'Jia Zhangke',
-    poster: '/movies/feuxsauvages.jpg',
   },
   {
     id: 6,
@@ -66,46 +66,46 @@ const movies = [
   },
   {
     id: 7,
+    title: 'Les feux sauvages',
+    director: 'Jia Zhangke',
+    poster: '/movies/feuxsauvages.jpg',
+  },
+  {
+    id: 8,
     title: 'Évanouis',
     director: 'Zach Cregger',
     poster: '/movies/évanouis.webp',
   },
   {
-    id: 8,
+    id: 9,
     title: 'Babygirl',
     director: 'Halina Reijn',
     poster: '/movies/babygirl.webp',
   },
+
   {
-    id: 9,
+    id: 10,
     title: 'Deux sœurs',
     director: 'Mike Leigh',
     poster: '/movies/deuxsoeurs.jpg',
   },
-
   {
-    id: 10,
+    id: 11,
     title: 'Nouvelle vague',
     director: 'Richard Linklater',
     poster: '/movies/nouvellevague.jpg',
   },
   {
-    id: 11,
+    id: 12,
     title: 'Baby invasion',
     director: 'Harmony Korine',
     poster: '/movies/babyinvasion.webp',
   },
   {
-    id: 12,
+    id: 13,
     title: 'Harvest',
     director: 'Athina Rachel Tsangari',
     poster: '/movies/harvest.jpg',
-  },
-  {
-    id: 13,
-    title: 'The life of Chuck',
-    director: 'Mike Flanagan',
-    poster: '/movies/chuck.webp',
   },
   {
     id: 14,
