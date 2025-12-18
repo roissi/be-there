@@ -1,73 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
-
-/* Variables CSS pour les polices et couleurs */
-
-:root {
-  --black: #000;
-  --blue-normal: #2c60f5;
-  --blue-normal-trans: #2c62f5af;
-  --blue-light: #5780f5;
-  --blue-light-trans: #eaf3f5;
-  --font-figtree: 'Figtree', sans-serif;
-}
-
-.font-figtree {
-  color: var(--green-light);
-  font-family: var(--font-figtree);
-}
-
-body {
-  font-family: var(--font-figtree);
-  background-color: #ffffff;
-  color: #000000;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Utility Classes */
-.bg-blue-normal {
-  background-color: var(--blue-normal);
-}
-.bg-blue-normal-trans {
-  background-color: var(--blue-normal-trans);
-}
-.btn-blue {
-  background-color: var(--blue-normal);
-}
-.btn-blue:hover {
-  background-color: var(--blue-light);
+:root {
+  color-scheme: light;
 }
 
-.btn-trans {
-  background-color: var(--transparent);
-  color: var(--blue-normal);
-  border-color: var(--blue-normal);
-}
-.btn-trans:hover {
-  background-color: var(--blue-light-trans);
-  color: var(--blue-normal);
-  border-color: var(--blue-normal);
+html {
+  scroll-behavior: smooth;
+  background: #fbfbfc;
 }
 
-.text-blue-normal {
-  color: var(--blue-normal);
-}
-.text-link {
-  color: var(--black);
-}
-.text-link:hover {
-  color: var(--blue-normal);
+body {
+  background: transparent;
+  color: #0a0a0a;
+  min-height: 100dvh;
+  position: relative;
+  isolation: isolate; /* important pour gérer le z-index du ::before */
 }
 
-.border-blue-normal {
-  border-color: var(--blue-normal);
+/* Texture globale (visible partout) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background-image: url('/fabric_plaid.png');
+  background-repeat: repeat;
+  background-size: 520px 520px;
+
+  /* la texture est très claire → il faut monter un peu */
+  opacity: 0.22;
+  mix-blend-mode: multiply;
 }
 
-/* Mode sombre avec Tailwind */
+::selection {
+  background: rgba(0, 0, 0, 0.12);
+}
+
 @layer base {
   body {
-    @apply dark:bg-[#0a0a0a] dark:text-[#ededed];
+    @apply antialiased;
+  }
+
+  .dark body {
+    color: #ffffff;
+  }
+
+  .dark html {
+    background: #0b0b0c;
+  }
+
+  .dark body::before {
+    opacity: 0.14;
+    mix-blend-mode: overlay;
   }
 }

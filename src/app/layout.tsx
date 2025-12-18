@@ -53,12 +53,27 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const locale = await getLocale();
-
-  // Fournir tous les messages au côté client est la manière la plus simple de commencer
   const messages = await getMessages();
 
+  // Script ultra tôt : applique .dark selon localStorage, sinon selon l’OS
+  const themeInitScript = `
+(function () {
+  try {
+    var t = localStorage.getItem('theme');
+    if (t !== 'dark' && t !== 'light') {
+      t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    if (t === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  } catch (e) {}
+})();
+  `.trim();
+
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="font-figtree antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}

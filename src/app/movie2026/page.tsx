@@ -97,15 +97,15 @@ const movies = [
   },
   {
     id: 12,
-    title: 'Baby invasion',
-    director: 'Harmony Korine',
-    poster: '/movies/babyinvasion.webp',
+    title: 'L’amour qu’il nous reste',
+    director: 'Hlynur Palmason',
+    poster: '/movies/amourreste.webp',
   },
   {
     id: 13,
-    title: 'Harvest',
-    director: 'Athina Rachel Tsangari',
-    poster: '/movies/harvest.jpg',
+    title: 'Baby invasion',
+    director: 'Harmony Korine',
+    poster: '/movies/babyinvasion.webp',
   },
   {
     id: 14,
