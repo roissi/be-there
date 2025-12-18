@@ -1,14 +1,16 @@
 // src/i18n/request.ts
 import { getRequestConfig } from 'next-intl/server';
+import type { GetRequestConfigParams } from 'next-intl/server';
 import { routing } from './routing';
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
+export default getRequestConfig(async ({ requestLocale }: GetRequestConfigParams) => {
+  const requested = await requestLocale;
 
   // Sécurité : fallback si locale absente / invalide
-  if (!locale || !routing.locales.includes(locale as any)) {
-    locale = routing.defaultLocale;
-  }
+  const locale: (typeof routing.locales)[number] =
+    requested && routing.locales.includes(requested as (typeof routing.locales)[number])
+      ? (requested as (typeof routing.locales)[number])
+      : routing.defaultLocale;
 
   return {
     locale,
