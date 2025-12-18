@@ -1,8 +1,8 @@
-// src/app/movie2025/page.tsx
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
+import { ThumbsUp, ThumbsDown, ArrowDown } from 'lucide-react';
 
 type Vote = {
   movie_id: number;
@@ -10,144 +10,167 @@ type Vote = {
   downvotes: number;
 };
 
-const YEAR = 2025;
+const YEAR = 2026;
 const LOCAL_STORAGE_KEY = `votedMovies_${YEAR}_v2`;
+
+const SOCIAL_LINKS = [
+  { label: 'X', url: 'https://x.com/roissi' },
+  { label: 'Insta', url: 'https://www.instagram.com/cyrildegraeve/' },
+  { label: 'Lkd', url: 'https://www.linkedin.com/in/cyril-de-graeve/' },
+  { label: 'Ghub', url: 'https://github.com/roissi' },
+  { label: 'Linktr', url: 'https://linktr.ee/cyrildegraeve' },
+];
 
 const movies = [
   {
     id: 0,
-    title: 'Joker : folie à deux',
-    director: 'Todd Phillips',
-    poster: '/movies/jocker2.jpg',
+    title: 'Une bataille après l’autre',
+    director: 'Paul Thomas Anderson',
+    poster: '/movies/bataille.webp',
   },
   {
     id: 1,
-    title: 'Miséricorde',
-    director: 'Alain Guiraudie',
-    poster: '/movies/misericorde.jpg',
+    title: 'Mektoub, my love : Canto due',
+    director: 'Abdellatif Kechiche',
+    poster: '/movies/mektoub.webp',
   },
   {
     id: 2,
-    title: 'Civil war',
-    director: 'Alex Garland',
-    poster: '/movies/civilwar.jpg',
+    title: 'L’agent secret',
+    director: 'Kleber Mendonça Filho',
+    poster: '/movies/agentsecret.jpg',
   },
   {
     id: 3,
-    title: 'Furiosa : une saga Mad Max',
-    director: 'George Miller',
-    poster: '/movies/furiosa.jpg',
+    title: 'Fragments d’un parcours amoureux',
+    director: 'Chloé Barreau',
+    poster: '/movies/fragments.webp',
   },
   {
     id: 4,
-    title: 'Cent mille milliards',
-    director: 'Virgil Vernier',
-    poster: '/movies/centmillemilliards.jpg',
+    title: 'Black dog',
+    director: 'Guan Hu',
+    poster: '/movies/blackdog.webp',
   },
   {
     id: 5,
-    title: 'Les reines du drame',
-    director: 'Alexis Langlois',
-    poster: '/movies/lesreinesdudrame.jpg',
+    title: 'Eddington',
+    director: 'Ari Aster',
+    poster: '/movies/eddington.webp',
   },
   {
     id: 6,
-    title: 'Los delincuentes',
-    director: 'Rodrigo Moreno',
-    poster: '/movies/losdelicuentes.jpg',
+    title: 'Le rire et le couteau',
+    director: 'Pedro Pinho',
+    poster: '/movies/rirecouteau.webp',
   },
   {
     id: 7,
-    title: 'La zone d’intérêt',
-    director: 'Jonathan Glazer',
-    poster: '/movies/lazonedinteret.jpg',
+    title: 'Les feux sauvages',
+    director: 'Jia Zhangke',
+    poster: '/movies/feuxsauvages.jpg',
   },
   {
     id: 8,
-    title: 'The sweet east',
-    director: 'Sean Price Williams',
-    poster: '/movies/thesweeteast.jpg',
+    title: 'Évanouis',
+    director: 'Zach Cregger',
+    poster: '/movies/évanouis.webp',
   },
   {
     id: 9,
-    title: 'Anora',
-    director: 'Sean Baker',
-    poster: '/movies/anora.jpg',
+    title: 'Babygirl',
+    director: 'Halina Reijn',
+    poster: '/movies/babygirl.webp',
+  },
+
+  {
+    id: 10,
+    title: 'Deux sœurs',
+    director: 'Mike Leigh',
+    poster: '/movies/deuxsoeurs.jpg',
+  },
+  {
+    id: 11,
+    title: 'Nouvelle vague',
+    director: 'Richard Linklater',
+    poster: '/movies/nouvellevague.jpg',
+  },
+  {
+    id: 12,
+    title: 'L’amour qu’il nous reste',
+    director: 'Hlynur Palmason',
+    poster: '/movies/amourreste.webp',
+  },
+  {
+    id: 13,
+    title: 'Baby invasion',
+    director: 'Harmony Korine',
+    poster: '/movies/babyinvasion.webp',
+  },
+  {
+    id: 14,
+    title: 'Miroirs no. 3',
+    director: 'Christian Petzold',
+    poster: '/movies/miroirs3.webp',
   },
 ];
+
+// Variants pour l'animation d'entrée des numéros
+const numberVariants = {
+  hidden: { opacity: 0, x: -30, scale: 0.3, rotate: -10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      delay: i * 0.15 + 0.3,
+      type: 'spring',
+      stiffness: 260,
+      damping: 20,
+    },
+  }),
+};
 
 export default function CinemaPage() {
   const [votes, setVotes] = useState<Vote[]>([]);
   const [votedMovies, setVotedMovies] = useState<number[]>([]);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const [activeHover, setActiveHover] = useState<number | null>(null);
+  const [showTop15, setShowTop15] = useState(false);
+
+  const bonusAnchorRef = useRef<HTMLDivElement | null>(null);
+
+  const top10 = useMemo(() => movies.slice(0, 10), []);
+  const bonus5 = useMemo(() => movies.slice(10, 15), []);
 
   useEffect(() => {
-    const storedVotesString = localStorage.getItem(LOCAL_STORAGE_KEY);
-    const storedVotes = storedVotesString ? JSON.parse(storedVotesString) : [];
+    const storedVotes = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY) || '[]'
+    );
     setVotedMovies(storedVotes);
-  }, []);
 
-  useEffect(() => {
     async function fetchVotes() {
       try {
         const res = await fetch(`/api/votes?year=${YEAR}`);
-        if (!res.ok) throw new Error('Erreur lors du chargement des votes');
+        if (!res.ok) throw new Error('Erreur');
         const data: Vote[] = await res.json();
-
-        const mappedVotes: Vote[] = movies.map((movie) => {
-          const voteData = data.find((vote) => vote.movie_id === movie.id);
+        const mappedVotes = movies.map((m) => {
+          const v = data.find((dv) => dv.movie_id === m.id);
           return {
-            movie_id: movie.id,
-            upvotes: voteData?.upvotes ?? 0,
-            downvotes: voteData?.downvotes ?? 0,
+            movie_id: m.id,
+            upvotes: v?.upvotes ?? 0,
+            downvotes: v?.downvotes ?? 0,
           };
         });
-
         setVotes(mappedVotes);
       } catch (err) {
-        if (err instanceof Error) {
-          console.error(
-            'Erreur lors de la récupération des votes :',
-            err.message
-          );
-        } else {
-          console.error(
-            'Erreur inconnue lors de la récupération des votes :',
-            err
-          );
-        }
+        console.error(err);
       }
     }
     fetchVotes();
   }, []);
 
-  useEffect(() => {
-    const checkTouchDevice = () => {
-      setIsTouchDevice(
-        'ontouchstart' in window || navigator.maxTouchPoints > 0
-      );
-    };
-    checkTouchDevice();
-
-    const handleResize = () => {
-      if (window.innerWidth > 640) setActiveHover(null);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const handleVote = async (movieId: number, type: 'up' | 'down') => {
-    const storedVotes = JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_KEY) || '[]'
-    ) as number[];
-
-    if (storedVotes.includes(movieId)) {
-      alert('Tu as déjà voté pour ce film, calme-toi :)');
-      return;
-    }
-
+    if (votedMovies.includes(movieId)) return;
     try {
       const res = await fetch('/api/votes', {
         method: 'POST',
@@ -155,268 +178,322 @@ export default function CinemaPage() {
         body: JSON.stringify({ index: movieId, type, year: YEAR }),
       });
 
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(
-          `Erreur API: ${res.status} - ${errorData.error || 'Unknown error'}`
+      if (res.ok) {
+        const updatedVoted = [...votedMovies, movieId];
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedVoted));
+        setVotedMovies(updatedVoted);
+
+        setVotes((prev) =>
+          prev.map((v) =>
+            v.movie_id === movieId
+              ? {
+                  ...v,
+                  [type === 'up' ? 'upvotes' : 'downvotes']:
+                    v[type === 'up' ? 'upvotes' : 'downvotes'] + 1,
+                }
+              : v
+          )
         );
       }
-
-      const updatedVoted = [...storedVotes, movieId];
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedVoted));
-      setVotedMovies(updatedVoted);
-
-      // Re-fetch + remap
-      const updated = await fetch(`/api/votes?year=${YEAR}`).then((r) =>
-        r.json()
-      );
-      const mappedVotes: Vote[] = movies.map((movie) => {
-        const voteData = updated.find(
-          (vote: Vote) => vote.movie_id === movie.id
-        );
-        return {
-          movie_id: movie.id,
-          upvotes: voteData?.upvotes ?? 0,
-          downvotes: voteData?.downvotes ?? 0,
-        };
-      });
-      setVotes(mappedVotes);
     } catch (err) {
-      if (err instanceof Error) {
-        console.error('Erreur lors de la mise à jour des votes :', err.message);
-      } else {
-        console.error(
-          'Erreur inconnue lors de la mise à jour des votes :',
-          err
-        );
-      }
+      console.error(err);
     }
   };
 
-  const shareUrl = 'https://www.bethere.cyrildegraeve.dev/';
-  const shareText = 'Découvrez le Top 10 Cinéma 2025 de Roissi !';
+  const renderMovieCard = (
+    movie: (typeof movies)[number],
+    globalIndex: number
+  ) => {
+    const movieVote = votes.find((v) => v.movie_id === movie.id) || {
+      upvotes: 0,
+      downvotes: 0,
+    };
+    const hasVoted = votedMovies.includes(movie.id);
+
+    return (
+      <motion.div
+        key={movie.id}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: (globalIndex % 5) * 0.1 }}
+        className="group relative"
+      >
+        {/* NUMÉRO */}
+        <motion.div
+          className="absolute -top-10 -left-4 z-20 pointer-events-none"
+          variants={numberVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={globalIndex}
+        >
+          <span className="text-8xl font-black italic leading-none text-yellow-500 drop-shadow-[0_10px_15px_rgba(0,0,0,1)] select-none transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300 inline-block">
+            {globalIndex + 1}
+          </span>
+        </motion.div>
+
+        {/* AFFICHE */}
+        <div className="relative z-10 aspect-[2/3] rounded-sm overflow-hidden bg-zinc-900 border border-zinc-800 transition-all duration-500 group-hover:border-yellow-500/50 shadow-2xl">
+          <Image
+            src={movie.poster}
+            alt={movie.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-hover:bg-black/85 group-hover:backdrop-blur-md transition-all duration-500 flex flex-col justify-between p-6">
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.3,
+                  delay: (globalIndex % 5) * 0.1 + 0.4,
+                }}
+              >
+                <h3 className="text-xl font-black leading-tight text-white uppercase italic mb-2 tracking-tighter transition-colors group-hover:text-yellow-400">
+                  {movie.title}
+                </h3>
+                <p className="text-xs font-bold text-yellow-500 tracking-[0.2em] uppercase transition-colors group-hover:text-white">
+                  {movie.director}
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Votes */}
+            <div className="mt-auto space-y-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <div className="h-[1px] w-full bg-zinc-700/50" />
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleVote(movie.id, 'up')}
+                  disabled={hasVoted}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border transition-all duration-300 ${
+                    hasVoted
+                      ? 'border-zinc-800 text-zinc-600 bg-zinc-900/50 cursor-not-allowed'
+                      : 'border-white/10 hover:border-yellow-500 hover:text-yellow-500 text-white bg-white/5 active:scale-95'
+                  }`}
+                >
+                  <ThumbsUp
+                    size={14}
+                    className={hasVoted ? '' : 'group-hover:animate-pulse'}
+                  />
+                  <span className="text-[10px] font-black tracking-widest">
+                    {movieVote.upvotes}
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => handleVote(movie.id, 'down')}
+                  disabled={hasVoted}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border transition-all duration-300 ${
+                    hasVoted
+                      ? 'border-zinc-800 text-zinc-600 bg-zinc-900/50 cursor-not-allowed'
+                      : 'border-white/10 hover:border-red-500 hover:text-red-500 text-white bg-white/5 active:scale-95'
+                  }`}
+                >
+                  <ThumbsDown size={14} />
+                  <span className="text-[10px] font-black tracking-widest">
+                    {movieVote.downvotes}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  };
+
+  const handleRevealTop15 = () => {
+    if (showTop15) return;
+    setShowTop15(true);
+    requestAnimationFrame(() => {
+      setTimeout(
+        () =>
+          bonusAnchorRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          }),
+        50
+      );
+    });
+  };
 
   return (
-    <div className="font-figtree bg-gray-200 min-h-screen flex flex-col">
-      <div className="flex-grow flex flex-col items-center py-12 px-6 relative">
-        <motion.h1
-          className="text-center text-3xl sm:text-4xl font-extrabold text-black bg-yellow-500 px-8 py-4 rounded-full shadow-md border-2 border-gray-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-yellow-500/30 pb-20">
+      {/* Header Style "Cinéma Premium" */}
+      <header className="relative h-[50vh] flex flex-col items-center justify-center overflow-hidden border-b border-zinc-800/50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800/20 via-zinc-950 to-zinc-950 z-0" />
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="z-10 text-center px-6"
         >
-          Top 10 Cinéma 2025
-        </motion.h1>
+          <h1 className="text-6xl md:text-8xl font-black tracking-[-0.05em] uppercase italic leading-none">
+            <span className="text-zinc-500">Top</span>{' '}
+            <span className="text-yellow-500">Ten</span>
+            <br />
+            <span className="text-white">Ma liste 2025</span>
+          </h1>
+          <div className="mt-6 h-1 w-24 bg-yellow-500 mx-auto" />
+          <p className="mt-6 text-zinc-400 font-medium tracking-widest uppercase text-[10px] md:text-xs">
+            Tu peux donner ton avis toi aussi en survolant les affiches des
+            films en question
+          </p>
+        </motion.div>
+      </header>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 w-full max-w-6xl mt-16">
-          {movies.map((movie, index) => {
-            const movieVote = votes.find(
-              (vote) => vote.movie_id === movie.id
-            ) || { upvotes: 0, downvotes: 0 };
-            const hasVoted = votedMovies.includes(movie.id);
+      <main className="max-w-7xl mx-auto py-24 px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-20">
+          {/* TOP 10 */}
+          {top10.map((movie, index) => renderMovieCard(movie, index))}
 
-            return (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.2 }}
-                className="relative bg-white rounded-lg shadow-md hover:shadow-lg transform transition duration-300 ease-in-out"
-              >
-                <motion.div
-                  className="relative w-full h-full group rounded-lg overflow-hidden"
-                  onClick={
-                    isTouchDevice
-                      ? () =>
-                          setActiveHover(activeHover === index ? null : index)
-                      : undefined
-                  }
-                >
-                  <Image
-                    src={movie.poster}
-                    alt={movie.title}
-                    width={240}
-                    height={360}
-                    className="w-full object-cover"
-                  />
-                  <motion.div
-                    className={`absolute inset-0 bg-black/80 flex flex-col items-center justify-center transition duration-500 text-center px-2 ${
-                      isTouchDevice
-                        ? activeHover === index
-                          ? 'opacity-100 pointer-events-auto'
-                          : 'opacity-0 pointer-events-none'
-                        : 'sm:opacity-0 sm:group-hover:opacity-100'
-                    }`}
-                  >
-                    <p className="text-yellow-500 text-4xl font-bold">
-                      {movie.title}
-                    </p>
-                    <p className="text-white text-5xl font-medium mt-4">
-                      {movie.director}
-                    </p>
+          {/* BLOC CENTRÉ : card "rab" à gauche + Letterboxd à droite */}
+          <div className="lg:col-span-5 flex flex-col lg:flex-row justify-center items-stretch gap-6">
+            {/* CARD “TOP 15” */}
+            <motion.button
+              type="button"
+              onClick={handleRevealTop15}
+              className="group relative flex-1 max-w-2xl p-10 text-left"
+            >
+              <div className="h-full w-full rounded-sm border border-zinc-800 bg-zinc-900/20 transition-all duration-300 group-hover:border-violet-500/40 group-hover:bg-zinc-900/35 shadow-2xl p-10">
+                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-zinc-500">
+                  Bonus track
+                </p>
 
-                    <div className="mt-4 flex items-center gap-4">
-                      <button
-                        className={`flex items-center gap-1 bg-gray-200 text-black px-3 py-1 rounded-md ${
-                          hasVoted
-                            ? 'opacity-70 cursor-not-allowed'
-                            : 'hover:bg-gray-100'
-                        }`}
-                        onClick={() => handleVote(movie.id, 'up')}
-                        disabled={hasVoted}
+                <h3 className="mt-4 text-3xl font-black uppercase italic tracking-tight text-violet-500">
+                  Tu veux du rab ?
+                  <br />
+                  Clique ici
+                  <br />
+                  <span className="text-zinc-200">
+                    (parce que c&apos;est toi)
+                  </span>
+                </h3>
+
+                <p className="mt-6 text-xs uppercase tracking-[0.25em] text-zinc-400 flex items-center gap-3">
+                  {showTop15 ? (
+                    <>
+                      Voilà. Descends{' '}
+                      <motion.span
+                        className="inline-flex"
+                        animate={{ y: [0, 6, 0] }}
+                        transition={{
+                          duration: 0.8,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }}
                       >
-                        😊 {movieVote.upvotes}
-                      </button>
-                      <button
-                        className={`flex items-center gap-1 bg-gray-200 text-black px-3 py-1 rounded-md ${
-                          hasVoted
-                            ? 'opacity-70 cursor-not-allowed'
-                            : 'hover:bg-gray-100'
-                        }`}
-                        onClick={() => handleVote(movie.id, 'down')}
-                        disabled={hasVoted}
-                      >
-                        😞 {movieVote.downvotes}
-                      </button>
-                    </div>
-                  </motion.div>
-                </motion.div>
+                        <ArrowDown className="h-5 w-5 text-violet-500" />
+                      </motion.span>
+                    </>
+                  ) : (
+                    'Débloque 5 films de plus.'
+                  )}
+                </p>
 
-                {index === 0 ? (
-                  <motion.div
-                    className="absolute -top-6 left-2 bg-yellow-500 text-black border-4 border-gray-200 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-extrabold shadow-xl"
-                    initial={{ scale: 1 }}
-                    animate={{ scale: [1, 1.8, 1], rotate: [0, 10, -10, 0] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                  >
-                    {index + 1}
-                  </motion.div>
-                ) : index === 1 ? (
-                  <motion.div
-                    className="absolute -top-6 left-2 bg-yellow-500 text-black border-4 border-gray-200 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-extrabold shadow-xl"
-                    initial={{ scale: 1 }}
-                    animate={{ scale: [1, 1.5, 1] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                  >
-                    {index + 1}
-                  </motion.div>
-                ) : index === 2 ? (
-                  <motion.div
-                    className="absolute -top-6 left-2 bg-yellow-500 text-black border-4 border-gray-200 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-extrabold shadow-xl"
-                    initial={{ scale: 1 }}
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                  >
-                    {index + 1}
-                  </motion.div>
-                ) : (
-                  <div className="absolute -top-6 left-2 bg-yellow-500 text-black border-4 border-gray-200 rounded-full w-16 h-16 flex items-center justify-center text-3xl font-extrabold shadow-xl">
-                    {index + 1}
+                <div className="mt-8 h-[1px] w-full bg-zinc-800/60" />
+                <div className="mt-6 text-[10px] font-black uppercase tracking-[0.35em] text-zinc-500">
+                  {showTop15 ? 'MON TOP 15, DU COUP' : 'TOP 10 OFFICIEL'}
+                </div>
+              </div>
+            </motion.button>
+
+            {/* LETTERBOXD */}
+            <motion.a
+              href="https://letterboxd.com/roissi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex-1 max-w-2xl p-10"
+            >
+              <div className="h-full w-full rounded-sm border border-zinc-800 bg-zinc-900/20 shadow-2xl p-10 transition-all duration-300 group-hover:border-lime-500/40 group-hover:bg-zinc-900/35">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+                  {/* TEXTE */}
+                  <div className="max-w-xl text-center lg:text-left">
+                    <h2 className="text-3xl font-black uppercase italic tracking-tight text-lime-400">
+                      T&apos;as encore faim ?
+                      <br />
+                      Viens manger sur mon LetterBoxd
+                    </h2>
+                    <p className="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-400">
+                      Scan le QR code ou clique ici
+                    </p>
                   </div>
-                )}
-              </motion.li>
-            );
-          })}
 
-          <div className="flex items-center justify-center px-6 py-4 bg-yellow-500 text-black text-center rounded-lg shadow-md col-span-1 sm:col-span-2 lg:col-span-2 lg:row-start-3 lg:col-start-3">
-            <p className="text-3xl sm:text-4xl lg:text-5xl font-semibold">
-              Tu veux afficher sur les Internets ton Top 10 à toi ?{' '}
-              <motion.a
-                href="https://www.bethere.cyrildegraeve.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Contactez-moi via ce lien"
-                className="text-black font-bold inline-block"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 400 }}
-              >
-                Contacte-moi
-              </motion.a>
-              . Donne-moi ta liste et le classement, et je m&apos;occupe de
-              tout.
-            </p>
+                  {/* QR */}
+                  <div className="relative w-60 h-60 sm:w-80 sm:h-80 group/qr">
+                    <div
+                      className="
+                        absolute -inset-1
+                        rounded-[3rem]
+                        bg-lime-400/35
+                        blur-3xl
+                        opacity-0
+                        transition-opacity duration-300
+                        group-hover/qr:opacity-100
+                        pointer-events-none
+                      "
+                    />
+                    <div
+                      className="
+                        relative z-10 h-full w-full
+                        transition-transform duration-300
+                        group-hover/qr:-translate-y-1
+                      "
+                    >
+                      <Image
+                        src="/movies/ltbxd.png"
+                        alt="QR Code LetterBoxd"
+                        fill
+                        sizes="320px"
+                        className="object-contain"
+                        priority={false}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.a>
           </div>
-        </ul>
-      </div>
 
-      <div className="flex flex-col items-center gap-2 mt-4">
-        <p className="text-lg font-semibold text-gray-700">
-          Si tu veux partager mon travail :
-        </p>
-        <div className="flex justify-center gap-4">
-          <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Partager sur Facebook"
-          >
-            <Image
-              src="/movies/facebook-round-color-icon.svg"
-              alt="Partager sur Facebook"
-              width={40}
-              height={40}
-              className="rounded-full hover:opacity-80 transition-opacity"
-            />
-          </a>
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Partager sur X"
-          >
-            <Image
-              src="/movies/x-social-media-round-icon.svg"
-              alt="Partager sur X"
-              width={40}
-              height={40}
-              className="rounded-full hover:opacity-80 transition-opacity"
-            />
-          </a>
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Partager sur Instagram"
-          >
-            <Image
-              src="/movies/ig-instagram-icon.svg"
-              alt="Partager sur Instagram"
-              width={40}
-              height={40}
-              className="rounded-full hover:opacity-80 transition-opacity"
-            />
-          </a>
-          <a
-            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareText)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Partager sur LinkedIn"
-          >
-            <Image
-              src="/movies/linkedin-app-icon.svg"
-              alt="Partager sur LinkedIn"
-              width={40}
-              height={40}
-              className="rounded-full hover:opacity-80 transition-opacity"
-            />
-          </a>
+          {/* BONUS 5 : on remonte TOUT le bloc bonus (pas juste la 1ère card) */}
+          {showTop15 && (
+            <div
+              ref={bonusAnchorRef}
+              className="lg:col-span-5 scroll-mt-24 lg:-mt-2"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-20">
+                {bonus5.map((movie, i) => renderMovieCard(movie, 10 + i))}
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      </main>
 
-      <footer className="w-full py-4 text-center text-black font-medium mt-4">
-        © 2025 | CDG
+      {/* Footer avec Liens réels */}
+      <footer className="max-w-7xl mx-auto border-t border-zinc-900 pt-12 px-6 flex flex-col md:flex-row justify-between items-center text-zinc-600 gap-8">
+        <div className="flex flex-col items-center md:items-start">
+          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">
+            © 2026 • Cyril De Graeve
+          </p>
+        </div>
+
+        <div className="flex gap-10">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition-all duration-300 font-black text-[10px] tracking-[0.3em] uppercase relative group"
+            >
+              {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-yellow-500 group-hover:w-full transition-all duration-300" />
+            </a>
+          ))}
+        </div>
       </footer>
     </div>
   );
