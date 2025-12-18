@@ -1,13 +1,19 @@
+// src/i18n/request.ts
 import { getRequestConfig } from 'next-intl/server';
-import { cookies } from 'next/headers';
+import type { GetRequestConfigParams } from 'next-intl/server';
+import { routing } from './routing';
 
-export default getRequestConfig(async () => {
-  // Utiliser await pour traiter cookies() de manière asynchrone
-  const cookieStore = await cookies();
-  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+export default getRequestConfig(async ({ requestLocale }: GetRequestConfigParams) => {
+  const requested = await requestLocale;
+
+  // Sécurité : fallback si locale absente / invalide
+  const locale: (typeof routing.locales)[number] =
+    requested && routing.locales.includes(requested as (typeof routing.locales)[number])
+      ? (requested as (typeof routing.locales)[number])
+      : routing.defaultLocale;
 
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    messages: (await import(`../messages/${locale}.json`)).default,
   };
 });

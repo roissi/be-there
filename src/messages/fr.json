@@ -1,0 +1,441 @@
+{
+  "topline": "Développeur Fullstack React / Next.js / Node",
+  "nav": {
+    "experiences": "Expériences",
+    "skills": "Compétences",
+    "caseStudies": "Case studies",
+    "contact": "Contact"
+  },
+  "hero": {
+    "pillLocation": "Paris · FR",
+    "pillFocus": "Fullstack + DevOps + GenAI",
+    "pillStack": "React · Next.js · Node",
+    "headline": "Je conçois des produits web <solid>solides</solid>, <fast>rapides</fast> et <clean>propres</clean>.",
+    "lead": "Développeur Fullstack JavaScript. Spécialisé dans les créations et refontes « haut niveau d’exigence » : Next.js App Router, back-offices sur-mesure, bases de données, e-commerce (Stripe), perf/SEO, déploiement VPS. Web + web mobile.",
+    "ctaPrimary": "Prendre un créneau",
+    "ctaSecondary": "Voir les expériences",
+    "stats": [
+      { "k": "4+ ans", "v": "React / Node" },
+      { "k": "App Router", "v": "Next.js 15" },
+      { "k": "Stripe", "v": "paiement" },
+      { "k": "15 ans", "v": "éditorial" }
+    ]
+  },
+  "contactCard": {
+    "title": "Contact direct",
+    "emailCta": "Envoyer un email",
+    "phoneCta": "Appeler",
+    "pillAvailability": "Disponible : missions freelance",
+    "pillRemote": "Remote / hybride Paris"
+  },
+  "sections": {
+    "experiences": {
+      "eyebrow": "Preuves",
+      "title": "Expériences sélectionnées"
+    },
+    "skills": { "eyebrow": "Stack", "title": "Compétences" },
+    "caseStudies": { "eyebrow": "Détails", "title": "Case studies" },
+    "contact": { "eyebrow": "Je suis à l'écoute", "title": "Contact" }
+  },
+  "caseStudy": {
+    "view": "Voir",
+    "columns": {
+      "context": "Contexte",
+      "deliverables": "Livrables",
+      "outcome": "Résultat"
+    }
+  },
+  "contactSection": {
+    "headline": "Discutons de vos besoins.",
+    "lead": "Réponse rapide. Je peux cadrer, proposer une approche, et livrer proprement (code + déploiement).",
+    "ctaCalendly": "Calendly",
+    "ctaEmail": "Email"
+  },
+  "footer": "© {year} Cyril De Graeve · React / Next.js / Node · Paris",
+  "experiences": [
+    {
+      "title": "Développeur Fullstack JavaScript & DevOps",
+      "org": "Librairie J.-F. Fourcade",
+      "period": "2025 — 2026",
+      "link": null,
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind",
+        "MySQL",
+        "NextAuth",
+        "Framer-motion",
+        "Drizzle",
+        "Stripe",
+        "Sharp",
+        "Nginx"
+      ],
+      "points": [
+        "Refonte intégrale (Front + Back) de la prestigieuse librairie (Paris, Le Marais).",
+        "Implémentation e-commerce “livres rares” : catalogue, recherche avancée, pages publiques SSR, perf/SEO.",
+        "Back-office sur-mesure : gestion catalogue + images + logique métier + sécurité admin.",
+        "Déploiement VPS : reverse-proxy, SSL, process manager, durcissement pragmatique et maintenance.",
+        "Mise en ligne prochainement (démo sur demande)."
+      ]
+    },
+    {
+      "title": "Développeur Fullstack JavaScript & GenAI",
+      "org": "Assistant GenAI",
+      "period": "2025",
+      "link": {
+        "label": "Demander une démo",
+        "href": "mailto:contact@cyrildegraeve.dev"
+      },
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind",
+        "shadcn/ui",
+        "OpenAI API",
+        "OCR (Tesseract)",
+        "OpenLibrary Covers API"
+      ],
+      "points": [
+        "Génération de contenus éditoriaux (fiche produit, SEO, newsletter, critique, traduction).",
+        "Flux texte ou photo → OCR → nettoyage/parsing structuré → rendu prêt à copier.",
+        "Routes dédiées /api/generate + /api/cover, prompts spécialisés par mode."
+      ]
+    },
+    {
+      "title": "Développeur Fullstack JavaScript & DevOps",
+      "org": "Librairie Pierre Saunier",
+      "period": "2025",
+      "link": { "label": "Site", "href": "https://www.pierre-saunier.fr" },
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind",
+        "MySQL",
+        "NextAuth",
+        "Drizzle",
+        "Stripe",
+        "Sharp",
+        "Nginx",
+        "PM2",
+        "Let’s Encrypt"
+      ],
+      "points": [
+        "Refonte d’un site PHP/MySQL vers une stack moderne, en respectant l’âme graphique de la célèbre librairie (Paris, Saint-André-des-Arts).",
+        "Back-office sur-mesure : gestion catalogue, images, sélection « vitrine », sécurité admin.",
+        "E-commerce : panier + paiement (CB / Apple Pay / Google Pay) via Stripe.",
+        "Déploiement SSH et config VPS, Nginx, Node, PM2"
+      ]
+    },
+    {
+      "title": "Développeur Fullstack JavaScript & DevOps",
+      "org": "Serious Publishing",
+      "period": "2024-2025",
+      "link": { "label": "Site", "href": "https://www.serious-publishing.fr" },
+      "tech": [
+        "React",
+        "Next.js",
+        "Node",
+        "Express",
+        "PostgreSQL",
+        "NextAuth",
+        "Framer-motion",
+        "JWT",
+        "Nginx",
+        "PM2"
+      ],
+      "points": [
+        "Refonte complète (PHP/MySQL → JS/PostgreSQL) du site de l’éditeur de Pop Culture + amélioration perf/sécurité + SEO.",
+        "Back-office + logique e-commerce (panier, frais de port, paiement Paypal).",
+        "Déploiement VPS : reverse proxy, SSL, process manager, durcissement basique."
+      ]
+    },
+    {
+      "title": "Développeur Fullstack JavaScript",
+      "org": "Codeberry",
+      "period": "2024",
+      "link": null,
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "shadcn/ui",
+        "Supabase",
+        "Drizzle",
+        "Server Actions",
+        "Clerk",
+        "Vercel",
+        "Jira API"
+      ],
+      "points": [
+        "Participation au MVP d’un SaaS générant des Pull Requests depuis des tickets Jira/Linear.",
+        "Intégration Jira : récupération de tickets, stockage (table jira_issues), synchro labels.",
+        "Livraison rapide d’une base de démo fonctionnelle en 5 jours."
+      ]
+    },
+    {
+      "title": "Développeur Fullstack JavaScript & DevOps",
+      "org": "Sajin Photo",
+      "period": "2024",
+      "link": null,
+      "tech": [
+        "React",
+        "Next.js",
+        "Node",
+        "Express",
+        "TypeScript",
+        "Bcrypt",
+        "JWT",
+        "Chakra UI",
+        "Nginx",
+        "PM2",
+        "SSL (Let’s Encrypt)"
+      ],
+      "points": [
+        "Conception d’une app web/mobile de partage de photos événementielles en temps réel.",
+        "Gestion events/albums, upload massif sécurisé, galerie (tri/recherche), accès contrôlés.",
+        "Mise en production VPS (proxy, SSL, sécurité et stabilité)."
+      ]
+    },
+    {
+      "title": "Développeur Front-end + DevOps",
+      "org": "Clairios",
+      "period": "2024",
+      "link": null,
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "Framer-motion",
+        "SEO",
+        "VPS"
+      ],
+      "points": [
+        "Site vitrine dynamique orienté PME/TPE : design moderne, responsive, accessible.",
+        "Optimisation SEO (meta, schema.org, sitemap) + perf (SSR, lazy loading).",
+        "Déploiement VPS + sécurité (SSL, firewall, process manager)."
+      ]
+    },
+    {
+      "title": "Développeur Fullstack JavaScript & Copywriter",
+      "org": "Hyper-Free",
+      "period": "2023 — 2025",
+      "link": {
+        "label": "Site",
+        "href": "https://hyper-free.cyrildegraeve.dev"
+      },
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Panda CSS",
+        "Ark UI",
+        "Framer-motion",
+        "i18next",
+        "SEO"
+      ],
+      "points": [
+        "Plateforme d’offres packagées (dev + copywriting) : contenu, structure, conversion.",
+        "Internationalisation FR/EN + composants réutilisables et design responsive.",
+        "SEO + tracking (Analytics / Search Console) et itérations basées sur les données."
+      ]
+    },
+    {
+      "title": "Développeur Fullstack JavaScript",
+      "org": "Artificial Life Coach",
+      "period": "2023",
+      "link": {
+        "label": "Prototype",
+        "href": "https://artificial-life-coach.vercel.app"
+      },
+      "tech": [
+        "React",
+        "Next.js",
+        "Node",
+        "Express",
+        "PostgreSQL",
+        "Sequelize",
+        "JWT",
+        "Bcrypt",
+        "Chakra UI",
+        "Framer Motion",
+        "OpenAI API"
+      ],
+      "points": [
+        "App web/mobile : agenda interactif + coach IA (suggestions personnalisées + Q/R).",
+        "API REST : auth sécurisée, gestion users/agenda, intégration LLM.",
+        "Optimisation prompts + approche perf (sanitization, cache sur réponses fréquentes)."
+      ]
+    },
+    {
+      "title": "Développeur React / TypeScript / Node.js",
+      "org": "Don Efficace (Giving What We Can) — CDD",
+      "period": "2022",
+      "link": null,
+      "tech": ["React", "Next.js", "TypeScript", "i18n", "Sanity", "Jest"],
+      "points": [
+        "Internationalisation et adaptation de contenus (FR) sur une base existante.",
+        "Tests et validation : Mise en place de tests unitaires avec Jest pour vérifier le bon fonctionnement des composants multilingues.",
+        "Collaboration internationale + pair programming (anglais au quotidien)."
+      ]
+    },
+    {
+      "title": "Product Owner & Développeur Back-end",
+      "org": "J’adopte un humain (projet de fin de formation)",
+      "period": "2021",
+      "link": null,
+      "tech": [
+        "React",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "JWT",
+        "Bcrypt",
+        "Swagger",
+        "Jest",
+        "Scrum"
+      ],
+      "points": [
+        "PO : backlog, user stories, rituels Scrum, coordination équipe (5 devs).",
+        "Back-end : API REST (MVC), auth JWT, rôles/permissions, documentation Swagger.",
+        "Algorithme de matching profils ↔ animaux + requêtes SQL optimisées."
+      ]
+    },
+    {
+      "title": "Journaliste / Éditeur & Rédacteur en chef / Copywriter",
+      "org": "Divers titres presse Culture et Nouvelles technos (web & kiosque)",
+      "period": "2000 — 2015",
+      "link": null,
+      "tech": [
+        "Éditorial",
+        "Copywriting",
+        "Storytelling",
+        "Synthèse",
+        "Interviews",
+        "Culture/Tech"
+      ],
+      "points": [
+        "15 ans d’expérience : écrire, structurer, convaincre — utile pour produit, contenu, UX."
+      ]
+    }
+  ],
+  "caseStudies": [
+    {
+      "name": "Librairie Pierre Saunier",
+      "client": "Refonte + e-commerce + back-office",
+      "period": "2025",
+      "href": "https://www.pierre-saunier.fr",
+      "summary": "Refonte d’un site librairie (PHP/MySQL) vers une plateforme moderne, avec back-office et paiement Stripe.",
+      "tech": [
+        "Next.js App Router",
+        "TypeScript",
+        "MySQL + Drizzle",
+        "NextAuth",
+        "Stripe",
+        "Nginx/PM2"
+      ],
+      "context": [
+        "Site existant à moderniser sans casser l’identité visuelle.",
+        "Besoin d’une administration robuste pour gérer catalogue (+ 10 000 références), images, vitrine et ventes."
+      ],
+      "build": [
+        "Front public + logique métier fullstack dans Next.js (SSR, server actions/handlers).",
+        "Back-office sur-mesure : CRUD catalogue, images, mise en avant « vitrine », sécurisation admin.",
+        "Côté données : schéma typé, migrations, optimisation pragmatique (structures + index).",
+        "Parcours e-commerce complet : panier, commande, paiement Stripe (CB + wallets).",
+        "Déploiement VPS : Nginx, SSL, process manager, mise en ligne stable et maintenable."
+      ],
+      "outcome": [
+        "Autonomie client : gestion du catalogue et des visuels sans friction.",
+        "Base saine pour itérer vite (recherche, SEO, nouvelles features produit).",
+        "Stack homogène : moins de complexité, plus de fiabilité."
+      ]
+    },
+    {
+      "name": "Assistant GenAI “Fiche Livre”",
+      "client": "Automatisation éditoriale (livre)",
+      "period": "2025",
+      "href": "https://assist.cyrildegraeve.dev",
+      "summary": "Outil GenAI pour produire des contenus éditoriaux prêts à publier à partir d’une 4e de couverture (texte ou photo).",
+      "tech": ["Next.js App Router", "OpenAI API", "OCR", "TypeScript"],
+      "context": [
+        "Cas d’usage « métier » : libraires / bibliothécaires / éditeurs.",
+        "Objectif : réduire drastiquement le temps de rédaction tout en standardisant la qualité."
+      ],
+      "build": [
+        "Pipeline texte ou photo → OCR → nettoyage → extraction → génération multi-formats.",
+        "Prompts spécialisés selon le besoin (fiche produit + SEO + newsletter, critique, traduction).",
+        "Réponses structurées + parsing pour obtenir un rendu propre, copiable, immédiatement utilisable.",
+        "Récupération automatique de jaquettes via ISBN (enrichissement rapide).",
+        "UI minimaliste, rapide, pensée pour un usage quotidien sur desktop/mobile."
+      ],
+      "outcome": [
+        "Production de contenus cohérents en quelques secondes, depuis une seule source.",
+        "Démo convaincante pour prospects : valeur immédiate, usage clair, résultats visibles."
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Front",
+      "items": [
+        "React",
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Accessibilité (bases)"
+      ]
+    },
+    {
+      "title": "Back",
+      "items": [
+        "Node.js",
+        "Express",
+        "REST APIs",
+        "Auth (NextAuth/JWT)",
+        "Server Actions / Route Handlers"
+      ]
+    },
+    {
+      "title": "Données",
+      "items": [
+        "PostgreSQL",
+        "MySQL",
+        "Drizzle",
+        "Supabase (usage)",
+        "Modélisation + relations + migrations"
+      ]
+    },
+    {
+      "title": "DevOps",
+      "items": [
+        "VPS Linux",
+        "Nginx",
+        "SSL (Let’s Encrypt)",
+        "PM2",
+        "Hardening « pragmatique »"
+      ]
+    },
+    {
+      "title": "GenAI",
+      "items": [
+        "OpenAI API",
+        "Prompting orienté outputs",
+        "OCR (workflow)",
+        "Automatisation de contenus"
+      ]
+    },
+    {
+      "title": "Bonus rare",
+      "items": [
+        "Éditorial / copy",
+        "SEO",
+        "Synthèse",
+        "Relation client",
+        "Anglais pro"
+      ]
+    }
+  ]
+}

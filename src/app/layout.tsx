@@ -1,5 +1,4 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+// src/app/layout.tsx
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -47,15 +46,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const locale = await getLocale();
-  const messages = await getMessages();
-
-  // Script ultra tôt : applique .dark selon localStorage, sinon selon l’OS
+  // Script ultra tôt : applique .dark selon localStorage, sinon LIGHT par défaut
   const themeInitScript = `
 (function () {
   try {
@@ -68,15 +64,11 @@ export default async function RootLayout({
 `.trim();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="font-figtree antialiased">
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
+      <body className="font-figtree antialiased">{children}</body>
     </html>
   );
 }
