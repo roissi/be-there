@@ -60,14 +60,12 @@ export default async function RootLayout({
 (function () {
   try {
     var t = localStorage.getItem('theme');
-    if (t !== 'dark' && t !== 'light') {
-      t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    if (t !== 'dark' && t !== 'light') t = 'light';
     if (t === 'dark') document.documentElement.classList.add('dark');
     else document.documentElement.classList.remove('dark');
   } catch (e) {}
 })();
-  `.trim();
+`.trim();
 
   return (
     <html lang={locale} suppressHydrationWarning>
