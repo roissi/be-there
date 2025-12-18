@@ -1,0 +1,441 @@
+{
+  "topline": "Full-stack Developer (React / Next.js / Node)",
+  "nav": {
+    "experiences": "Experience",
+    "skills": "Skills",
+    "caseStudies": "Case studies",
+    "contact": "Contact"
+  },
+  "hero": {
+    "pillLocation": "Paris · France",
+    "pillFocus": "Full-stack + DevOps + GenAI",
+    "pillStack": "React · Next.js · Node",
+    "headline": "I build web products that are <solid>robust</solid>, <fast>fast</fast> and <clean>clean</clean>.",
+    "lead": "Full-stack JavaScript developer. Specialised in high-standards builds and redesigns: Next.js App Router, bespoke back-offices, databases, e-commerce (Stripe), performance/SEO, and VPS deployments. Web + mobile web.",
+    "ctaPrimary": "Book a slot",
+    "ctaSecondary": "View experience",
+    "stats": [
+      { "k": "4+ yrs", "v": "React / Node" },
+      { "k": "App Router", "v": "Next.js 15" },
+      { "k": "Stripe", "v": "payments" },
+      { "k": "15 yrs", "v": "editorial" }
+    ]
+  },
+  "contactCard": {
+    "title": "Direct contact",
+    "emailCta": "Send an email",
+    "phoneCta": "Call",
+    "pillAvailability": "Available: freelance projects",
+    "pillRemote": "Remote / hybrid (Paris)"
+  },
+  "sections": {
+    "experiences": { "eyebrow": "Proof", "title": "Selected experience" },
+    "skills": { "eyebrow": "Stack", "title": "Skills" },
+    "caseStudies": { "eyebrow": "Details", "title": "Case studies" },
+    "contact": { "eyebrow": "Let’s talk", "title": "Contact" }
+  },
+  "caseStudy": {
+    "view": "View",
+    "columns": {
+      "context": "Context",
+      "deliverables": "Deliverables",
+      "outcome": "Outcome"
+    }
+  },
+  "contactSection": {
+    "headline": "Let’s discuss your needs.",
+    "lead": "Quick reply. I can scope, propose an approach, and deliver cleanly (code + deployment).",
+    "ctaCalendly": "Calendly",
+    "ctaEmail": "Email"
+  },
+  "footer": "© {year} Cyril De Graeve · React / Next.js / Node · Paris",
+  "experiences": [
+    {
+      "title": "Full-stack JavaScript Developer & DevOps",
+      "org": "Librairie J.-F. Fourcade",
+      "period": "2025 — 2026",
+      "link": null,
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind",
+        "MySQL",
+        "NextAuth",
+        "Framer-motion",
+        "Drizzle",
+        "Stripe",
+        "Sharp",
+        "Nginx"
+      ],
+      "points": [
+        "End-to-end rebuild (front + back) for a prestigious rare-book bookshop (Paris, Le Marais).",
+        "Rare-books e-commerce: catalogue, advanced search, SSR public pages, performance/SEO.",
+        "Bespoke admin: catalogue + images management, business rules, admin security.",
+        "VPS deployment: reverse proxy, SSL, process manager, pragmatic hardening and maintenance.",
+        "Launching soon (demo on request)."
+      ]
+    },
+    {
+      "title": "Full-stack JavaScript Developer & GenAI",
+      "org": "GenAI Assistant",
+      "period": "2025",
+      "link": {
+        "label": "Request a demo",
+        "href": "mailto:contact@cyrildegraeve.dev"
+      },
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind",
+        "shadcn/ui",
+        "OpenAI API",
+        "OCR (Tesseract)",
+        "OpenLibrary Covers API"
+      ],
+      "points": [
+        "Generates editorial content (product copy, SEO, newsletter, review, translation).",
+        "Text or photo → OCR → cleaning/structured parsing → ready-to-copy output.",
+        "Dedicated routes /api/generate + /api/cover, prompts tailored per mode."
+      ]
+    },
+    {
+      "title": "Full-stack JavaScript Developer & DevOps",
+      "org": "Librairie Pierre Saunier",
+      "period": "2025",
+      "link": { "label": "Website", "href": "https://www.pierre-saunier.fr" },
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind",
+        "MySQL",
+        "NextAuth",
+        "Drizzle",
+        "Stripe",
+        "Sharp",
+        "Nginx",
+        "PM2",
+        "Let’s Encrypt"
+      ],
+      "points": [
+        "Migrated a PHP/MySQL site to a modern stack while preserving the brand’s visual identity (Paris, Saint-André-des-Arts).",
+        "Bespoke admin: catalogue, images, “showcase” selection, admin security.",
+        "E-commerce: basket + Stripe checkout (cards / Apple Pay / Google Pay).",
+        "VPS setup: SSH, Nginx, Node, PM2."
+      ]
+    },
+    {
+      "title": "Full-stack JavaScript Developer & DevOps",
+      "org": "Serious Publishing",
+      "period": "2024-2025",
+      "link": {
+        "label": "Website",
+        "href": "https://www.serious-publishing.fr"
+      },
+      "tech": [
+        "React",
+        "Next.js",
+        "Node",
+        "Express",
+        "PostgreSQL",
+        "NextAuth",
+        "Framer-motion",
+        "JWT",
+        "Nginx",
+        "PM2"
+      ],
+      "points": [
+        "Full redesign (PHP/MySQL → JS/PostgreSQL) for a pop-culture publisher: performance/security improvements + SEO.",
+        "Back-office + e-commerce logic (basket, shipping rules, PayPal).",
+        "VPS deployment: reverse proxy, SSL, process manager, basic hardening."
+      ]
+    },
+    {
+      "title": "Full-stack JavaScript Developer",
+      "org": "Codeberry",
+      "period": "2024",
+      "link": null,
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "shadcn/ui",
+        "Supabase",
+        "Drizzle",
+        "Server Actions",
+        "Clerk",
+        "Vercel",
+        "Jira API"
+      ],
+      "points": [
+        "Contributed to an MVP that generates Pull Requests from Jira/Linear tickets.",
+        "Jira integration: fetch tickets, store them (jira_issues table), sync labels.",
+        "Delivered a working demo base in 5 days."
+      ]
+    },
+    {
+      "title": "Full-stack JavaScript Developer & DevOps",
+      "org": "Sajin Photo",
+      "period": "2024",
+      "link": null,
+      "tech": [
+        "React",
+        "Next.js",
+        "Node",
+        "Express",
+        "TypeScript",
+        "Bcrypt",
+        "JWT",
+        "Chakra UI",
+        "Nginx",
+        "PM2",
+        "SSL (Let’s Encrypt)"
+      ],
+      "points": [
+        "Built a web/mobile app for real-time event photo sharing.",
+        "Events/albums management, secure bulk upload, gallery (sorting/search), access control.",
+        "Production VPS setup (proxy, SSL, security and stability)."
+      ]
+    },
+    {
+      "title": "Front-end Developer + DevOps",
+      "org": "Clairios",
+      "period": "2024",
+      "link": null,
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "Framer-motion",
+        "SEO",
+        "VPS"
+      ],
+      "points": [
+        "Modern, responsive, accessible marketing site for SMEs.",
+        "SEO optimisation (meta, schema.org, sitemap) + performance (SSR, lazy loading).",
+        "VPS deployment + security (SSL, firewall, process manager)."
+      ]
+    },
+    {
+      "title": "Full-stack JavaScript Developer & Copywriter",
+      "org": "Hyper-Free",
+      "period": "2023 — 2025",
+      "link": {
+        "label": "Website",
+        "href": "https://hyper-free.cyrildegraeve.dev"
+      },
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Panda CSS",
+        "Ark UI",
+        "Framer-motion",
+        "i18next",
+        "SEO"
+      ],
+      "points": [
+        "Packaged offers platform (dev + copywriting): content, structure, conversion.",
+        "FR/EN internationalisation + reusable components and responsive design.",
+        "SEO + tracking (Analytics / Search Console) and data-driven iterations."
+      ]
+    },
+    {
+      "title": "Full-stack JavaScript Developer",
+      "org": "Artificial Life Coach",
+      "period": "2023",
+      "link": {
+        "label": "Prototype",
+        "href": "https://artificial-life-coach.vercel.app"
+      },
+      "tech": [
+        "React",
+        "Next.js",
+        "Node",
+        "Express",
+        "PostgreSQL",
+        "Sequelize",
+        "JWT",
+        "Bcrypt",
+        "Chakra UI",
+        "Framer Motion",
+        "OpenAI API"
+      ],
+      "points": [
+        "Web/mobile app: interactive agenda + AI coach (personalised suggestions + Q&A).",
+        "REST API: secure auth, users/agenda management, LLM integration.",
+        "Prompt optimisation + performance approach (sanitisation, caching for frequent answers)."
+      ]
+    },
+    {
+      "title": "React / TypeScript / Node.js Developer",
+      "org": "Don Efficace (Giving What We Can) — FTC",
+      "period": "2022",
+      "link": null,
+      "tech": ["React", "Next.js", "TypeScript", "i18n", "Sanity", "Jest"],
+      "points": [
+        "Internationalisation and FR content adaptation on an existing codebase.",
+        "Testing and validation: unit tests with Jest for multilingual components.",
+        "International collaboration + pair programming (English daily)."
+      ]
+    },
+    {
+      "title": "Product Owner & Back-end Developer",
+      "org": "J’adopte un humain (training capstone project)",
+      "period": "2021",
+      "link": null,
+      "tech": [
+        "React",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "JWT",
+        "Bcrypt",
+        "Swagger",
+        "Jest",
+        "Scrum"
+      ],
+      "points": [
+        "PO: backlog, user stories, Scrum rituals, team coordination (5 devs).",
+        "Back-end: REST API (MVC), JWT auth, roles/permissions, Swagger documentation.",
+        "Profile ↔ animals matching algorithm + optimised SQL queries."
+      ]
+    },
+    {
+      "title": "Journalist / Editor-in-chief / Copywriter",
+      "org": "Various culture & new-tech publications (web & print)",
+      "period": "2000 — 2015",
+      "link": null,
+      "tech": [
+        "Editorial",
+        "Copywriting",
+        "Storytelling",
+        "Synthesis",
+        "Interviews",
+        "Culture/Tech"
+      ],
+      "points": [
+        "15 years’ experience writing, structuring and persuading — useful for product, content and UX."
+      ]
+    }
+  ],
+  "caseStudies": [
+    {
+      "name": "Librairie Pierre Saunier",
+      "client": "Redesign + e-commerce + admin",
+      "period": "2025",
+      "href": "https://www.pierre-saunier.fr",
+      "summary": "Migrated a bookshop website (PHP/MySQL) to a modern platform, with a bespoke admin and Stripe payments.",
+      "tech": [
+        "Next.js App Router",
+        "TypeScript",
+        "MySQL + Drizzle",
+        "NextAuth",
+        "Stripe",
+        "Nginx/PM2"
+      ],
+      "context": [
+        "Modernise an existing site without breaking the visual identity.",
+        "Need a robust admin to manage the catalogue (10,000+ records), images, showcase picks and sales."
+      ],
+      "build": [
+        "Public front-end + full-stack business logic inside Next.js (SSR, server actions/handlers).",
+        "Bespoke admin: catalogue CRUD, images, “showcase” highlighting, admin hardening.",
+        "Data layer: typed schema, migrations, pragmatic optimisation (structures + indexes).",
+        "Full e-commerce flow: basket, order, Stripe payment (cards + wallets).",
+        "VPS deployment: Nginx, SSL, process manager, stable and maintainable setup."
+      ],
+      "outcome": [
+        "Client autonomy: manage catalogue and visuals without friction.",
+        "Healthy base to iterate fast (search, SEO, new product features).",
+        "Consistent stack: less complexity, more reliability."
+      ]
+    },
+    {
+      "name": "GenAI “Book Sheet” Assistant",
+      "client": "Editorial automation (books)",
+      "period": "2025",
+      "href": "https://assist.cyrildegraeve.dev",
+      "summary": "GenAI tool that produces publish-ready editorial content from a book blurb (text or photo).",
+      "tech": ["Next.js App Router", "OpenAI API", "OCR", "TypeScript"],
+      "context": [
+        "A real “job-to-be-done” use case for booksellers / librarians / publishers.",
+        "Goal: drastically reduce writing time while standardising quality."
+      ],
+      "build": [
+        "Text or photo → OCR → cleaning → extraction → multi-format generation.",
+        "Prompts specialised per need (product copy + SEO + newsletter, review, translation).",
+        "Structured responses + parsing to output clean, copy-ready text.",
+        "Automatic cover fetching via ISBN (fast enrichment).",
+        "Minimal, fast UI designed for daily desktop/mobile use."
+      ],
+      "outcome": [
+        "Consistent content produced in seconds from a single source.",
+        "Strong demo for prospects: immediate value, clear usage, visible results."
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Front-end",
+      "items": [
+        "React",
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Accessibility (basics)"
+      ]
+    },
+    {
+      "title": "Back-end",
+      "items": [
+        "Node.js",
+        "Express",
+        "REST APIs",
+        "Auth (NextAuth/JWT)",
+        "Server Actions / Route Handlers"
+      ]
+    },
+    {
+      "title": "Data",
+      "items": [
+        "PostgreSQL",
+        "MySQL",
+        "Drizzle",
+        "Supabase (usage)",
+        "Modelling + relations + migrations"
+      ]
+    },
+    {
+      "title": "DevOps",
+      "items": [
+        "Linux VPS",
+        "Nginx",
+        "SSL (Let’s Encrypt)",
+        "PM2",
+        "Pragmatic hardening"
+      ]
+    },
+    {
+      "title": "GenAI",
+      "items": [
+        "OpenAI API",
+        "Output-driven prompting",
+        "OCR workflow",
+        "Content automation"
+      ]
+    },
+    {
+      "title": "Bonus",
+      "items": [
+        "Editorial / copywriting",
+        "SEO",
+        "Synthesis",
+        "Client relations",
+        "Professional English"
+      ]
+    }
+  ]
+}
