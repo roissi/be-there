@@ -7,13 +7,6 @@ type Theme = 'light' | 'dark';
 
 const STORAGE_KEY = 'theme';
 
-function getSystemTheme(): Theme {
-  if (typeof window === 'undefined') return 'light';
-  return window.matchMedia?.('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
-}
-
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
   if (theme === 'dark') root.classList.add('dark');
@@ -22,7 +15,6 @@ function applyTheme(theme: Theme) {
 
 export default function ThemeToggle() {
   const [theme, setTheme] = React.useState<Theme>('light');
-  const mediaRef = React.useRef<MediaQueryList | null>(null);
 
   React.useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
@@ -34,22 +26,11 @@ export default function ThemeToggle() {
       return;
     }
 
-    // 2) sinon : thème système + écoute des changements OS
-    const sys = getSystemTheme();
-    setTheme(sys);
-    applyTheme(sys);
-
-    const mq = window.matchMedia?.('(prefers-color-scheme: dark)') ?? null;
-    mediaRef.current = mq;
-
-    const onChange = (e: MediaQueryListEvent) => {
-      const next: Theme = e.matches ? 'dark' : 'light';
-      setTheme(next);
-      applyTheme(next);
-    };
-
-    mq?.addEventListener?.('change', onChange);
-    return () => mq?.removeEventListener?.('change', onChange);
+    // 2) sinon : défaut forcé = light (pas de thème système)
+    const def: Theme = 'light';
+    setTheme(def);
+    applyTheme(def);
+    localStorage.setItem(STORAGE_KEY, def);
   }, []);
 
   function toggle() {
