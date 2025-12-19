@@ -82,7 +82,6 @@ const movies = [
     director: 'Halina Reijn',
     poster: '/movies/babygirl.webp',
   },
-
   {
     id: 10,
     title: 'Deux sœurs',
@@ -115,7 +114,6 @@ const movies = [
   },
 ];
 
-// Variants pour l'animation d'entrée des numéros
 const numberVariants = {
   hidden: { opacity: 0, x: -30, scale: 0.3, rotate: -10 },
   visible: (i: number) => ({
@@ -219,7 +217,6 @@ export default function CinemaPage() {
         transition={{ duration: 0.5, delay: (globalIndex % 5) * 0.1 }}
         className="group relative"
       >
-        {/* NUMÉRO */}
         <motion.div
           className="absolute -top-10 -left-4 z-20 pointer-events-none"
           variants={numberVariants}
@@ -233,7 +230,6 @@ export default function CinemaPage() {
           </span>
         </motion.div>
 
-        {/* AFFICHE */}
         <div className="relative z-10 aspect-[2/3] rounded-sm overflow-hidden bg-zinc-900 border border-zinc-800 transition-all duration-500 group-hover:border-yellow-500/50 shadow-2xl">
           <Image
             src={movie.poster}
@@ -262,7 +258,6 @@ export default function CinemaPage() {
               </motion.div>
             </div>
 
-            {/* Votes */}
             <div className="mt-auto space-y-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
               <div className="h-[1px] w-full bg-zinc-700/50" />
               <div className="flex gap-2">
@@ -323,7 +318,6 @@ export default function CinemaPage() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-yellow-500/30 pb-20">
-      {/* Header Style "Cinéma Premium" */}
       <header className="relative h-[50vh] flex flex-col items-center justify-center overflow-hidden border-b border-zinc-800/50">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800/20 via-zinc-950 to-zinc-950 z-0" />
         <motion.div
@@ -345,20 +339,20 @@ export default function CinemaPage() {
         </motion.div>
       </header>
 
-      <main className="max-w-7xl mx-auto py-24 px-6">
+      <main className="max-w-7xl mx-auto py-24 px-6 -mt-12 sm:-mt-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-20">
           {/* TOP 10 */}
           {top10.map((movie, index) => renderMovieCard(movie, index))}
 
-          {/* BLOC CENTRÉ : card "rab" à gauche + Letterboxd à droite */}
-          <div className="lg:col-span-5 flex flex-col lg:flex-row justify-center items-stretch gap-6">
-            {/* CARD “TOP 15” */}
+          {/* BLOC RAB + LETTERBOXD (fix tablette) */}
+          <div className="sm:col-span-2 lg:col-span-5 flex flex-col md:flex-row gap-6 mt-6">
+            {/* RAB */}
             <motion.button
               type="button"
               onClick={handleRevealTop15}
-              className="group relative flex-1 max-w-2xl p-10 text-left"
+              className="group relative w-full md:w-1/2 min-w-0 text-left"
             >
-              <div className="h-full w-full rounded-sm border border-zinc-800 bg-zinc-900/20 transition-all duration-300 group-hover:border-violet-500/40 group-hover:bg-zinc-900/35 shadow-2xl p-10">
+              <div className="h-full w-full rounded-sm border border-zinc-800 bg-zinc-900/20 transition-all duration-300 group-hover:border-violet-500/40 group-hover:bg-zinc-900/35 shadow-2xl p-6 md:p-8 lg:p-10">
                 <p className="text-[10px] font-black uppercase tracking-[0.35em] text-zinc-500">
                   Bonus track
                 </p>
@@ -406,12 +400,11 @@ export default function CinemaPage() {
               href="https://letterboxd.com/roissi/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex-1 max-w-2xl p-10"
+              className="group relative w-full md:w-1/2 min-w-0 mt-4 sm:mt-0"
             >
-              <div className="h-full w-full rounded-sm border border-zinc-800 bg-zinc-900/20 shadow-2xl p-10 transition-all duration-300 group-hover:border-lime-500/40 group-hover:bg-zinc-900/35">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-                  {/* TEXTE */}
-                  <div className="max-w-xl text-center lg:text-left">
+              <div className="h-full w-full rounded-sm border border-zinc-800 bg-zinc-900/20 shadow-2xl p-6 md:p-8 lg:p-10 transition-all duration-300 group-hover:border-lime-500/40 group-hover:bg-zinc-900/35">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+                  <div className="max-w-xl text-center md:text-left">
                     <h2 className="text-3xl font-black uppercase italic tracking-tight text-lime-400">
                       T&apos;as encore faim ?
                       <br />
@@ -422,8 +415,8 @@ export default function CinemaPage() {
                     </p>
                   </div>
 
-                  {/* QR */}
-                  <div className="relative w-60 h-60 sm:w-80 sm:h-80 group/qr">
+                  {/* QR (un poil plus compact en tablette) */}
+                  <div className="relative w-64 h-64 md:w-36 md:h-36 lg:w-56 lg:h-56 group/qr shrink-0">
                     <div
                       className="
                         absolute -inset-1
@@ -447,8 +440,8 @@ export default function CinemaPage() {
                         src="/movies/ltbxd.png"
                         alt="QR Code LetterBoxd"
                         fill
-                        sizes="320px"
-                        className="object-contain"
+                        sizes="256px"
+                        className="object-contain rounded-md"
                         priority={false}
                       />
                     </div>
@@ -458,11 +451,11 @@ export default function CinemaPage() {
             </motion.a>
           </div>
 
-          {/* BONUS 5 : on remonte TOUT le bloc bonus (pas juste la 1ère card) */}
+          {/* BONUS 5 (fix tablette : span sur 2 colonnes en sm) */}
           {showTop15 && (
             <div
               ref={bonusAnchorRef}
-              className="lg:col-span-5 scroll-mt-24 lg:-mt-2"
+              className="sm:col-span-2 lg:col-span-5 scroll-mt-24 mt-8"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-20">
                 {bonus5.map((movie, i) => renderMovieCard(movie, 10 + i))}
@@ -472,7 +465,6 @@ export default function CinemaPage() {
         </div>
       </main>
 
-      {/* Footer avec Liens réels */}
       <footer className="max-w-7xl mx-auto border-t border-zinc-900 pt-12 px-6 flex flex-col md:flex-row justify-between items-center text-zinc-600 gap-8">
         <div className="flex flex-col items-center md:items-start">
           <p className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">

@@ -1,57 +1,44 @@
 // src/app/layout.tsx
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import './globals.css';
 
+const SITE_URL = 'https://bethere.cyrildegraeve.dev';
+
 export const metadata: Metadata = {
-  title:
-    'Cyril De Graeve - Fullstack Web & Mobile Developer | Création de sites web modernes et optimisés SEO.',
-  description:
-    "Cyril De Graeve est un développeur fullstack Web & Mobile, spécialisé dans la création de sites et d'applications modernes, dynamiques et optimisés SEO.",
-  keywords: [
-    'développeur fullstack',
-    'freelance',
-    'création site web',
-    'SEO',
-    'React',
-    'Node.js',
-    'développement web mobile',
-    'création landing page',
-    'copywriter',
-  ],
+  metadataBase: new URL(SITE_URL),
+
+  // Garde le RootLayout “générique” : pas de canonical ici (sinon tu casses /en vs /fr)
   openGraph: {
-    title:
-      'Cyril De Graeve - Fullstack Web & Mobile Developer | Création de sites web modernes et optimisés SEO.',
-    description:
-      "Cyril De Graeve est un développeur fullstack Web & Mobile, spécialisé dans la création de sites et d'applications modernes, dynamiques et optimisés SEO.",
-    url: 'https://bethere.cyrildegraeve.dev',
     type: 'website',
+    siteName: 'Cyril De Graeve',
     images: [
       {
-        url: 'https://bethere.cyrildegraeve.dev/opengraph.png',
+        url: '/opengraph.png',
         width: 1200,
         height: 630,
-        alt: 'Cyril De Graeve - Développeur Fullstack Web & Mobile',
+        alt: 'Cyril De Graeve - Fullstack Developer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Be There - Build an Amazing Website',
-    description:
-      'Développeur Fullstack Web & Mobile, Cyril De Graeve vous accompagne pour créer un site ou une appli moderne, performante, et optimisée SEO.',
-    images: ['https://bethere.cyrildegraeve.dev/opengraph.png'],
-  },
-  alternates: {
-    canonical: 'https://bethere.cyrildegraeve.dev',
+    images: ['/opengraph.png'],
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Script ultra tôt : applique .dark selon localStorage, sinon LIGHT par défaut
+  // Next 15: headers() est async
+  const h = await headers();
+
+  // next-intl middleware attache ce header
+  const rawLocale = h.get('x-next-intl-locale') ?? 'en';
+  const locale = rawLocale === 'fr' ? 'fr' : 'en';
+
   const themeInitScript = `
 (function () {
   try {
@@ -64,7 +51,7 @@ export default function RootLayout({
 `.trim();
 
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

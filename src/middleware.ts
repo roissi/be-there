@@ -9,8 +9,5 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: [
-    // Exclut /movie2025 et /movie2024 (et leurs sous-chemins) du middleware next-intl
-    '/((?!_next|.*\\..*|movie2025(?:/.*)?$|movie2024(?:/.*)?$).*)',
-  ],
+  matcher: ['/((?!api|_next|.*\\..*|movie20\\d{2}(?:/.*)?$).*)'],
 };
