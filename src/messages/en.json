@@ -1,5 +1,12 @@
 {
   "topline": "Full-stack Developer (React / Next.js / Node)",
+
+  "meta": {
+    "title": "Cyril De Graeve — Fullstack Developer (React / Next.js / Node)",
+    "description": "Fullstack developer specialised in Next.js (App Router), bespoke back-offices, e-commerce (Stripe), performance/SEO and VPS deployments.",
+    "keywords": "next.js, react, freelance developer, paris, seo, stripe"
+  },
+
   "nav": {
     "experiences": "Experience",
     "skills": "Skills",
