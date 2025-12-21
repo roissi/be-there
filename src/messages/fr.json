@@ -78,7 +78,7 @@
         "Nginx"
       ],
       "points": [
-        "Refonte intégrale (Front + Back) de la prestigieuse librairie (Paris, Le Marais).",
+        "Refonte intégrale (Front + Back) du site de la prestigieuse librairie (Paris, Le Marais).",
         "Implémentation e-commerce “livres rares” : catalogue, recherche avancée, pages publiques SSR, perf/SEO.",
         "Back-office sur-mesure : gestion catalogue + images + logique métier + sécurité admin.",
         "Déploiement VPS : reverse-proxy, SSL, process manager, durcissement pragmatique et maintenance.",
