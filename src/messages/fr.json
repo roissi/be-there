@@ -22,8 +22,8 @@
     "ctaPrimary": "Prendre un créneau",
     "ctaSecondary": "Voir les expériences",
     "stats": [
-      { "k": "4+ ans", "v": "React / Node" },
-      { "k": "App Router", "v": "Next.js 15" },
+      { "k": "5+ ans", "v": "React / Node" },
+      { "k": "App Router", "v": "Next.js 16" },
       { "k": "Stripe", "v": "paiement" },
       { "k": "15 ans", "v": "éditorial" }
     ]
@@ -63,7 +63,7 @@
     {
       "title": "Développeur Fullstack JavaScript & DevOps",
       "org": "Librairie J.-F. Fourcade",
-      "period": "2025 — 2026",
+      "period": "2025 - 2026",
       "link": null,
       "tech": [
         "Next.js (App Router)",
@@ -136,7 +136,7 @@
     {
       "title": "Développeur Fullstack JavaScript & DevOps",
       "org": "Serious Publishing",
-      "period": "2024-2025",
+      "period": "2024 - 2025",
       "link": { "label": "Site", "href": "https://www.serious-publishing.fr" },
       "tech": [
         "React",
@@ -312,7 +312,7 @@
     {
       "title": "Journaliste / Éditeur & Rédacteur en chef / Copywriter",
       "org": "Divers titres presse Culture et Nouvelles technos (web & kiosque)",
-      "period": "2000 — 2015",
+      "period": "2000 - 2015",
       "link": null,
       "tech": [
         "Éditorial",
