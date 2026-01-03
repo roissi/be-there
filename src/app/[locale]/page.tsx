@@ -251,14 +251,14 @@ export default function HomePage() {
               'absolute inset-0',
               "bg-[url('/fabric_plaid.png')] bg-repeat",
               '[background-size:520px_520px]',
-              'opacity-[0.07] mix-blend-multiply',
-              'dark:opacity-[0.04] dark:mix-blend-overlay',
+              'mix-blend-multiply',
+              'dark:opacity-[0.06] dark:mix-blend-overlay',
             ].join(' ')}
           />
 
           {/* blobs */}
-          <div className="absolute -top-24 left-1/2 h-80 w-[900px] -translate-x-1/2 rounded-full bg-sky-100/40 blur-3xl dark:bg-sky-500/10" />
-          <div className="absolute -bottom-24 left-1/3 h-80 w-[700px] -translate-x-1/2 rounded-full bg-teal-100/40 blur-3xl dark:bg-teal-500/10" />
+          <div className="absolute -top-24 left-1/2 h-80 w-[900px] -translate-x-1/2 rounded-full bg-sky-200/40 blur-3xl dark:bg-sky-500/10" />
+          <div className="absolute -bottom-24 left-1/3 h-80 w-[700px] -translate-x-1/2 rounded-full bg-teal-200/40 blur-3xl dark:bg-teal-500/10" />
         </div>
 
         {/* top bar */}

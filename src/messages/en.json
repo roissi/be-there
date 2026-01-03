@@ -22,8 +22,8 @@
     "ctaPrimary": "Book a slot",
     "ctaSecondary": "View experience",
     "stats": [
-      { "k": "4+ yrs", "v": "React / Node" },
-      { "k": "App Router", "v": "Next.js 15" },
+      { "k": "5+ yrs", "v": "React / Node" },
+      { "k": "App Router", "v": "Next.js 16" },
       { "k": "Stripe", "v": "payments" },
       { "k": "15 yrs", "v": "editorial" }
     ]
@@ -60,7 +60,7 @@
     {
       "title": "Full-stack JavaScript Developer & DevOps",
       "org": "Librairie J.-F. Fourcade",
-      "period": "2025 — 2026",
+      "period": "2025 - 2026",
       "link": null,
       "tech": [
         "Next.js (App Router)",
@@ -133,7 +133,7 @@
     {
       "title": "Full-stack JavaScript Developer & DevOps",
       "org": "Serious Publishing",
-      "period": "2024-2025",
+      "period": "2024 - 2025",
       "link": {
         "label": "Website",
         "href": "https://www.serious-publishing.fr"
@@ -227,7 +227,7 @@
     {
       "title": "Full-stack JavaScript Developer & Copywriter",
       "org": "Hyper-Free",
-      "period": "2023 — 2025",
+      "period": "2023 - 2025",
       "link": {
         "label": "Website",
         "href": "https://hyper-free.cyrildegraeve.dev"
@@ -312,7 +312,7 @@
     {
       "title": "Journalist / Editor-in-chief / Copywriter",
       "org": "Various culture & new-tech publications (web & print)",
-      "period": "2000 — 2015",
+      "period": "2000 - 2015",
       "link": null,
       "tech": [
         "Editorial",
