@@ -87,8 +87,8 @@
       "org": "GenAI Assistant",
       "period": "2025",
       "link": {
-        "label": "Request a demo",
-        "href": "mailto:contact@cyrildegraeve.dev"
+        "label": "GitHub repo",
+        "href": "https://github.com/roissi/assistance_librairie-ai"
       },
       "tech": [
         "Next.js (App Router)",
