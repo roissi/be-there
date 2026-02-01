@@ -64,7 +64,10 @@
       "title": "Développeur Fullstack JavaScript & DevOps",
       "org": "Librairie J.-F. Fourcade",
       "period": "2025 - 2026",
-      "link": null,
+      "link": {
+        "label": "Website",
+        "href": "https://www.librairie-fourcade.com/"
+      },
       "tech": [
         "Next.js (App Router)",
         "TypeScript",
