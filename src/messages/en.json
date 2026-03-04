@@ -23,7 +23,7 @@
     "ctaSecondary": "View experience",
     "stats": [
       { "k": "5+ yrs", "v": "React / Node" },
-      { "k": "App Router", "v": "Next.js 16" },
+      { "k": "App Router", "v": "Next.js" },
       { "k": "Stripe", "v": "payments" },
       { "k": "15 yrs", "v": "editorial" }
     ]
@@ -57,6 +57,34 @@
   },
   "footer": "© {year} Cyril De Graeve · React / Next.js / Node · Paris",
   "experiences": [
+    {
+      "title": "Full-stack JavaScript Developer & Product Architect",
+      "org": "Numero K (Kefir)",
+      "period": "2026",
+      "link": {
+        "label": "Website",
+        "href": "https://numerok-paris.fr/"
+      },
+      "tech": [
+        "Next.js 15 (App Router)",
+        "React 19",
+        "TypeScript",
+        "Fastify",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "JWT + HTTP Cookies",
+        "Brevo API",
+        "Nginx",
+        "VPS"
+      ],
+      "points": [
+        "Designed and built a full e-commerce MVP: weekly auction flow, member area, and admin back-office.",
+        "Set up a monorepo architecture (web + api apps) with clear boundaries and fast delivery workflow.",
+        "Implemented critical auction business rules (minimum increment, time-based tie-break, automatic closure of expired published auctions).",
+        "Handled concurrent bids with PostgreSQL transactional serialization (`pg_advisory_xact_lock`) to keep current price consistent.",
+        "Integrated transactional notifications (opening, closing, news) with Brevo templates and admin tooling."
+      ]
+    },
     {
       "title": "Full-stack JavaScript Developer & DevOps",
       "org": "Librairie J.-F. Fourcade",
@@ -332,6 +360,38 @@
   ],
   "caseStudies": [
     {
+      "name": "Numero K",
+      "client": "Auction-based e-commerce MVP + member area + admin",
+      "period": "2026",
+      "href": "https://numerok-paris.fr/",
+      "summary": "Designed and built a complete e-commerce product around a weekly auction model, with strict business rules, an admin back-office, and transactional notifications.",
+      "tech": [
+        "Next.js 15 App Router",
+        "React 19",
+        "Fastify",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "JWT + HTTP Cookies",
+        "Brevo API"
+      ],
+      "context": [
+        "Ship a credible MVP quickly, without sacrificing business-critical robustness.",
+        "Handle a concurrency-sensitive flow (simultaneous bids) under strict auction rules."
+      ],
+      "build": [
+        "Monorepo architecture (web + API) to keep clear boundaries and accelerate iterations.",
+        "Implemented critical auction rules: minimum increment, time-based tie-break, and automatic closure of expired published auctions.",
+        "Serialized concurrent bids with `pg_advisory_xact_lock` to guarantee current-price consistency.",
+        "Admin back-office: auction creation/publish/close flows, member management, and email alert operations.",
+        "Brevo transactional notifications (opening, closing, news) with managed templates."
+      ],
+      "outcome": [
+        "Production-ready full-stack MVP across public, member, and admin journeys.",
+        "Higher business reliability on the product core (concurrent auction flow).",
+        "Clean technical base for faster product iteration and future scaling."
+      ]
+    },
+    {
       "name": "Librairie Pierre Saunier",
       "client": "Redesign + e-commerce + admin",
       "period": "2025",
@@ -402,6 +462,7 @@
       "title": "Back-end",
       "items": [
         "Node.js",
+        "Fastify",
         "Express",
         "REST APIs",
         "Auth (NextAuth/JWT)",
@@ -413,7 +474,8 @@
       "items": [
         "PostgreSQL",
         "MySQL",
-        "Drizzle",
+        "Drizzle ORM",
+        "Transactional concurrency (pg_advisory_xact_lock)",
         "Supabase (usage)",
         "Modelling + relations + migrations"
       ]
@@ -421,11 +483,13 @@
     {
       "title": "DevOps",
       "items": [
+        "Monorepo (pnpm workspaces)",
         "Linux VPS",
         "Nginx",
         "SSL (Let’s Encrypt)",
         "PM2",
-        "Pragmatic hardening"
+        "Pragmatic hardening",
+        "Brevo API (transactional email)"
       ]
     },
     {
