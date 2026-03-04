@@ -18,12 +18,12 @@
     "pillFocus": "Fullstack + DevOps + GenAI",
     "pillStack": "React · Next.js · Node",
     "headline": "Je conçois des produits web <solid>solides</solid>, <fast>rapides</fast> et <clean>propres</clean>.",
-    "lead": "Développeur Fullstack JavaScript. Spécialisé dans les créations et refontes « haut niveau d’exigence » : Next.js App Router, back-offices sur-mesure, bases de données, e-commerce (Stripe), perf/SEO, déploiement VPS. Web + web mobile.",
+    "lead": "Développeur Fullstack JavaScript. Spécialisé dans les créations et refontes « haut niveau d’exigence » : Next.js App Router, back-offices sur-mesure, bases de données, e-commerce (Stripe), perf/SEO, déploiement VPS. Web + web mobile.",
     "ctaPrimary": "Prendre un créneau",
     "ctaSecondary": "Voir les expériences",
     "stats": [
       { "k": "5+ ans", "v": "React / Node" },
-      { "k": "App Router", "v": "Next.js 16" },
+      { "k": "App Router", "v": "Next.js" },
       { "k": "Stripe", "v": "paiement" },
       { "k": "15 ans", "v": "éditorial" }
     ]
@@ -32,7 +32,7 @@
     "title": "Contact direct",
     "emailCta": "Envoyer un email",
     "phoneCta": "Appeler",
-    "pillAvailability": "Disponible : missions freelance",
+    "pillAvailability": "Disponible : missions freelance",
     "pillRemote": "Remote / hybride Paris"
   },
   "sections": {
@@ -42,7 +42,7 @@
     },
     "skills": { "eyebrow": "Stack", "title": "Compétences" },
     "caseStudies": { "eyebrow": "Détails", "title": "Case studies" },
-    "contact": { "eyebrow": "Je suis à l'écoute", "title": "Contact" }
+    "contact": { "eyebrow": "Je suis   l'écoute", "title": "Contact" }
   },
   "caseStudy": {
     "view": "Voir",
@@ -60,6 +60,34 @@
   },
   "footer": "© {year} Cyril De Graeve · React / Next.js / Node · Paris",
   "experiences": [
+    {
+      "title": "Développeur Fullstack JavaScript & Architecte Produit",
+      "org": "Numéro K (Kefir)",
+      "period": "2026",
+      "link": {
+        "label": "Website",
+        "href": "https://numerok-paris.fr/"
+      },
+      "tech": [
+        "Next.js 15 (App Router)",
+        "React 19",
+        "TypeScript",
+        "Fastify",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "JWT + Cookies HTTP",
+        "Brevo API",
+        "Nginx",
+        "VPS"
+      ],
+      "points": [
+        "Conception et développement d’un MVP e-commerce complet: enchère hebdomadaire, espace membre et back-office admin.",
+        "Architecture monorepo (apps web + api) avec séparation claire des responsabilités et workflow de livraison rapide.",
+        "Implémentation des règles métier critiques d’enchères (incrément minimal, tie-break temporel, clôture automatique des enchères expirées).",
+        "Gestion de la concurrence des offres via sérialisation transactionnelle PostgreSQL (`pg_advisory_xact_lock`) pour fiabiliser le prix courant.",
+        "Intégration des notifications transactionnelles (ouverture, clôture, actu) via templates Brevo et outillage d’admin."
+      ]
+    },
     {
       "title": "Développeur Fullstack JavaScript & DevOps",
       "org": "Librairie J.-F. Fourcade",
@@ -82,9 +110,9 @@
       ],
       "points": [
         "Refonte intégrale (Front + Back) du site de la prestigieuse librairie (Paris, Le Marais).",
-        "Implémentation e-commerce “livres rares” : catalogue, recherche avancée, pages publiques SSR, perf/SEO.",
-        "Back-office sur-mesure : gestion catalogue + images + logique métier + sécurité admin.",
-        "Déploiement VPS : reverse-proxy, SSL, process manager, durcissement pragmatique et maintenance.",
+        "Implémentation e-commerce “livres rares” : catalogue, recherche avancée, pages publiques SSR, perf/SEO.",
+        "Back-office sur-mesure : gestion catalogue + images + logique métier + sécurité admin.",
+        "Déploiement VPS : reverse-proxy, SSL, process manager, durcissement pragmatique et maintenance.",
         "Mise en ligne prochainement (démo sur demande)."
       ]
     },
@@ -107,7 +135,7 @@
       ],
       "points": [
         "Génération de contenus éditoriaux (fiche produit, SEO, newsletter, critique, traduction).",
-        "Flux texte ou photo → OCR → nettoyage/parsing structuré → rendu prêt à copier.",
+        "Flux texte ou photo → OCR → nettoyage/parsing structuré → rendu prêt   copier.",
         "Routes dédiées /api/generate + /api/cover, prompts spécialisés par mode."
       ]
     },
@@ -131,8 +159,8 @@
       ],
       "points": [
         "Refonte d’un site PHP/MySQL vers une stack moderne, en respectant l’âme graphique de la célèbre librairie (Paris, Saint-André-des-Arts).",
-        "Back-office sur-mesure : gestion catalogue, images, sélection « vitrine », sécurité admin.",
-        "E-commerce : panier + paiement (CB / Apple Pay / Google Pay) via Stripe.",
+        "Back-office sur-mesure : gestion catalogue, images, sélection « vitrine », sécurité admin.",
+        "E-commerce : panier + paiement (CB / Apple Pay / Google Pay) via Stripe.",
         "Déploiement SSH et config VPS, Nginx, Node, PM2"
       ]
     },
@@ -156,7 +184,7 @@
       "points": [
         "Refonte complète (PHP/MySQL → JS/PostgreSQL) du site de l’éditeur de Pop Culture + amélioration perf/sécurité + SEO.",
         "Back-office + logique e-commerce (panier, frais de port, paiement Paypal).",
-        "Déploiement VPS : reverse proxy, SSL, process manager, durcissement basique."
+        "Déploiement VPS : reverse proxy, SSL, process manager, durcissement basique."
       ]
     },
     {
@@ -179,7 +207,7 @@
       ],
       "points": [
         "Participation au MVP d’un SaaS générant des Pull Requests depuis des tickets Jira/Linear.",
-        "Intégration Jira : récupération de tickets, stockage (table jira_issues), synchro labels.",
+        "Intégration Jira : récupération de tickets, stockage (table jira_issues), synchro labels.",
         "Livraison rapide d’une base de démo fonctionnelle en 5 jours."
       ]
     },
@@ -222,7 +250,7 @@
         "VPS"
       ],
       "points": [
-        "Site vitrine dynamique orienté PME/TPE : design moderne, responsive, accessible.",
+        "Site vitrine dynamique orienté PME/TPE : design moderne, responsive, accessible.",
         "Optimisation SEO (meta, schema.org, sitemap) + perf (SSR, lazy loading).",
         "Déploiement VPS + sécurité (SSL, firewall, process manager)."
       ]
@@ -246,7 +274,7 @@
         "SEO"
       ],
       "points": [
-        "Plateforme d’offres packagées (dev + copywriting) : contenu, structure, conversion.",
+        "Plateforme d’offres packagées (dev + copywriting) : contenu, structure, conversion.",
         "Internationalisation FR/EN + composants réutilisables et design responsive.",
         "SEO + tracking (Analytics / Search Console) et itérations basées sur les données."
       ]
@@ -273,8 +301,8 @@
         "OpenAI API"
       ],
       "points": [
-        "App web/mobile : agenda interactif + coach IA (suggestions personnalisées + Q/R).",
-        "API REST : auth sécurisée, gestion users/agenda, intégration LLM.",
+        "App web/mobile : agenda interactif + coach IA (suggestions personnalisées + Q/R).",
+        "API REST : auth sécurisée, gestion users/agenda, intégration LLM.",
         "Optimisation prompts + approche perf (sanitization, cache sur réponses fréquentes)."
       ]
     },
@@ -286,7 +314,7 @@
       "tech": ["React", "Next.js", "TypeScript", "i18n", "Sanity", "Jest"],
       "points": [
         "Internationalisation et adaptation de contenus (FR) sur une base existante.",
-        "Tests et validation : Mise en place de tests unitaires avec Jest pour vérifier le bon fonctionnement des composants multilingues.",
+        "Tests et validation : Mise en place de tests unitaires avec Jest pour vérifier le bon fonctionnement des composants multilingues.",
         "Collaboration internationale + pair programming (anglais au quotidien)."
       ]
     },
@@ -307,8 +335,8 @@
         "Scrum"
       ],
       "points": [
-        "PO : backlog, user stories, rituels Scrum, coordination équipe (5 devs).",
-        "Back-end : API REST (MVC), auth JWT, rôles/permissions, documentation Swagger.",
+        "PO : backlog, user stories, rituels Scrum, coordination équipe (5 devs).",
+        "Back-end : API REST (MVC), auth JWT, rôles/permissions, documentation Swagger.",
         "Algorithme de matching profils ↔ animaux + requêtes SQL optimisées."
       ]
     },
@@ -326,11 +354,43 @@
         "Culture/Tech"
       ],
       "points": [
-        "15 ans d’expérience : écrire, structurer, convaincre — utile pour produit, contenu, UX."
+        "15 ans d’expérience : écrire, structurer, convaincre — utile pour produit, contenu, UX."
       ]
     }
   ],
   "caseStudies": [
+    {
+      "name": "Numéro K",
+      "client": "MVP e-commerce aux enchères + espace membre + admin",
+      "period": "2026",
+      "href": "https://numerok-paris.fr/",
+      "summary": "Conception et développement d’un produit e-commerce complet basé sur une enchère hebdomadaire, avec règles métier strictes, back-office admin et notifications transactionnelles.",
+      "tech": [
+        "Next.js 15 App Router",
+        "React 19",
+        "Fastify",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "JWT + Cookies HTTP",
+        "Brevo API"
+      ],
+      "context": [
+        "Créer un MVP crédible rapidement, sans compromis sur la robustesse métier.",
+        "Gérer un flux sensible aux accès concurrents (offres simultanées) avec des règles d’enchère strictes."
+      ],
+      "build": [
+        "Architecture monorepo (web + API) pour séparer clairement les responsabilités et accélérer les itérations.",
+        "Implémentation des règles critiques d’enchères : incrément minimal, tie-break temporel, clôture automatique des enchères expirées.",
+        "Sérialisation transactionnelle des offres concurrentes via `pg_advisory_xact_lock` pour garantir la cohérence du prix courant.",
+        "Back-office admin : création/publication/clôture d’enchères, gestion membres, pilotage des alertes email.",
+        "Notifications transactionnelles Brevo (ouverture, clôture, actu) avec templates versionnés."
+      ],
+      "outcome": [
+        "MVP fullstack exploitable de bout en bout avec parcours public, membre et admin.",
+        "Fiabilité métier renforcée sur le coeur du produit (enchères concurrentes).",
+        "Base technique saine pour scaler fonctionnellement (itérations produit rapides)."
+      ]
+    },
     {
       "name": "Librairie Pierre Saunier",
       "client": "Refonte + e-commerce + back-office",
@@ -346,20 +406,20 @@
         "Nginx/PM2"
       ],
       "context": [
-        "Site existant à moderniser sans casser l’identité visuelle.",
+        "Site existant   moderniser sans casser l’identité visuelle.",
         "Besoin d’une administration robuste pour gérer catalogue (+ 10 000 références), images, vitrine et ventes."
       ],
       "build": [
         "Front public + logique métier fullstack dans Next.js (SSR, server actions/handlers).",
-        "Back-office sur-mesure : CRUD catalogue, images, mise en avant « vitrine », sécurisation admin.",
-        "Côté données : schéma typé, migrations, optimisation pragmatique (structures + index).",
-        "Parcours e-commerce complet : panier, commande, paiement Stripe (CB + wallets).",
-        "Déploiement VPS : Nginx, SSL, process manager, mise en ligne stable et maintenable."
+        "Back-office sur-mesure : CRUD catalogue, images, mise en avant « vitrine », sécurisation admin.",
+        "Côté données : schéma typé, migrations, optimisation pragmatique (structures + index).",
+        "Parcours e-commerce complet : panier, commande, paiement Stripe (CB + wallets).",
+        "Déploiement VPS : Nginx, SSL, process manager, mise en ligne stable et maintenable."
       ],
       "outcome": [
-        "Autonomie client : gestion du catalogue et des visuels sans friction.",
+        "Autonomie client : gestion du catalogue et des visuels sans friction.",
         "Base saine pour itérer vite (recherche, SEO, nouvelles features produit).",
-        "Stack homogène : moins de complexité, plus de fiabilité."
+        "Stack homogène : moins de complexité, plus de fiabilité."
       ]
     },
     {
@@ -367,11 +427,11 @@
       "client": "Automatisation éditoriale (livre)",
       "period": "2025",
       "href": "https://assist.cyrildegraeve.dev",
-      "summary": "Outil GenAI pour produire des contenus éditoriaux prêts à publier à partir d’une 4e de couverture (texte ou photo).",
+      "summary": "Outil GenAI pour produire des contenus éditoriaux prêts   publier   partir d’une 4e de couverture (texte ou photo).",
       "tech": ["Next.js App Router", "OpenAI API", "OCR", "TypeScript"],
       "context": [
-        "Cas d’usage « métier » : libraires / bibliothécaires / éditeurs.",
-        "Objectif : réduire drastiquement le temps de rédaction tout en standardisant la qualité."
+        "Cas d’usage « métier » : libraires / bibliothécaires / éditeurs.",
+        "Objectif : réduire drastiquement le temps de rédaction tout en standardisant la qualité."
       ],
       "build": [
         "Pipeline texte ou photo → OCR → nettoyage → extraction → génération multi-formats.",
@@ -382,7 +442,7 @@
       ],
       "outcome": [
         "Production de contenus cohérents en quelques secondes, depuis une seule source.",
-        "Démo convaincante pour prospects : valeur immédiate, usage clair, résultats visibles."
+        "Démo convaincante pour prospects : valeur immédiate, usage clair, résultats visibles."
       ]
     }
   ],
@@ -402,6 +462,7 @@
       "title": "Back",
       "items": [
         "Node.js",
+        "Fastify",
         "Express",
         "REST APIs",
         "Auth (NextAuth/JWT)",
@@ -413,7 +474,8 @@
       "items": [
         "PostgreSQL",
         "MySQL",
-        "Drizzle",
+        "Drizzle ORM",
+        "Concurrence transactionnelle (pg_advisory_xact_lock)",
         "Supabase (usage)",
         "Modélisation + relations + migrations"
       ]
@@ -421,11 +483,13 @@
     {
       "title": "DevOps",
       "items": [
+        "Monorepo (pnpm workspaces)",
         "VPS Linux",
         "Nginx",
         "SSL (Let’s Encrypt)",
         "PM2",
-        "Hardening « pragmatique »"
+        "Hardening « pragmatique »",
+        "Brevo API (email transactionnel)"
       ]
     },
     {
