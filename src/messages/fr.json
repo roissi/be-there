@@ -42,7 +42,7 @@
     },
     "skills": { "eyebrow": "Stack", "title": "Compétences" },
     "caseStudies": { "eyebrow": "Détails", "title": "Case studies" },
-    "contact": { "eyebrow": "Je suis   l'écoute", "title": "Contact" }
+    "contact": { "eyebrow": "Je suis à l’écoute", "title": "Contact" }
   },
   "caseStudy": {
     "view": "Voir",
@@ -60,6 +60,35 @@
   },
   "footer": "© {year} Cyril De Graeve · React / Next.js / Node · Paris",
   "experiences": [
+    {
+      "title": "Développeur Fullstack JavaScript & Architecte Produit",
+      "org": "Hugues de Bourbon",
+      "period": "2026",
+      "link": {
+        "label": "Website",
+        "href": "https://huguesdebourbon.com/"
+      },
+      "tech": [
+        "Next.js 15 (App Router)",
+        "React 19",
+        "TypeScript",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "Better Auth",
+        "Stripe",
+        "Brevo API",
+        "Sharp",
+        "Nginx",
+        "VPS"
+      ],
+      "points": [
+        "Conception et développement d’une plateforme e-commerce métier pour marchand expert : catalogue, fiches pièces, sélection et tunnel de commande.",
+        "Back-office sur-mesure : gestion des pièces, images, statuts, mise en avant home, abonnés, commandes et newsletters.",
+        "Implémentation du paiement Stripe avec PaymentIntent, webhook signé, statuts de commande et passage automatique des pièces en vendues.",
+        "Module newsletter opérationnel via Brevo : brouillons, sélection de pièces, envoi test, envoi par lots, suivi des livraisons et désinscriptions.",
+        "Déploiement VPS : PostgreSQL, uploads d’images, build Next.js, service systemd, reverse-proxy Nginx et mise en production."
+      ]
+    },
     {
       "title": "Développeur Fullstack JavaScript & Architecte Produit",
       "org": "Numéro K (Kefir)",
@@ -135,7 +164,7 @@
       ],
       "points": [
         "Génération de contenus éditoriaux (fiche produit, SEO, newsletter, critique, traduction).",
-        "Flux texte ou photo → OCR → nettoyage/parsing structuré → rendu prêt   copier.",
+        "Flux texte ou photo → OCR → nettoyage/parsing structuré → rendu prêt à copier.",
         "Routes dédiées /api/generate + /api/cover, prompts spécialisés par mode."
       ]
     },
@@ -360,6 +389,43 @@
   ],
   "caseStudies": [
     {
+      "name": "Hugues de Bourbon",
+      "client": "Plateforme métier complète + e-commerce + back-office",
+      "period": "2026",
+      "href": "https://huguesdebourbon.com/",
+      "summary": "Conception et développement d’une plateforme métier complète pour marchand expert : catalogue éditorial, back-office, paiement Stripe, emails et newsletter.",
+      "tech": [
+        "Next.js 15 App Router",
+        "React 19",
+        "TypeScript",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "Better Auth",
+        "Stripe",
+        "Brevo API",
+        "Sharp",
+        "Nginx"
+      ],
+      "context": [
+        "Transformer une activité de marchand expert en outil web complet, public et administrable.",
+        "Gérer des pièces uniques avec statuts sensibles : disponible, réservée, vendue, indisponible.",
+        "Donner au client de l’autonomie sur le catalogue, les visuels, les commandes, les abonnés et les newsletters."
+      ],
+      "build": [
+        "Catalogue public structuré : catégories, sous-catégories, thèmes, fiches pièces, recherche simple et recherche avancée.",
+        "Back-office protégé par rôle admin : gestion des pièces, images, statuts, mise en avant home, commandes et abonnés.",
+        "Tunnel e-commerce : sélection, frais de livraison par zone, Stripe PaymentIntent, webhook signé et suivi des statuts.",
+        "Automatisation métier : passage automatique des pièces en vendues après paiement validé, emails transactionnels et demandes d’expertise.",
+        "Module newsletter Brevo : brouillons, sélection de pièces, envoi test, envoi par lots, suivi des livraisons et désinscriptions.",
+        "Déploiement VPS : PostgreSQL, uploads d’images, build Next.js, service systemd, reverse-proxy Nginx."
+      ],
+      "outcome": [
+        "Plateforme exploitable en production, couvrant le site public et les opérations internes.",
+        "Client autonome sur les tâches quotidiennes : catalogue, commandes, newsletter, demandes entrantes.",
+        "Socle technique cohérent pour faire évoluer le projet sans multiplier les outils externes."
+      ]
+    },
+    {
       "name": "Numéro K",
       "client": "MVP e-commerce aux enchères + espace membre + admin",
       "period": "2026",
@@ -406,7 +472,7 @@
         "Nginx/PM2"
       ],
       "context": [
-        "Site existant   moderniser sans casser l’identité visuelle.",
+        "Site existant à moderniser sans casser l’identité visuelle.",
         "Besoin d’une administration robuste pour gérer catalogue (+ 10 000 références), images, vitrine et ventes."
       ],
       "build": [
@@ -427,7 +493,7 @@
       "client": "Automatisation éditoriale (livre)",
       "period": "2025",
       "href": "https://assist.cyrildegraeve.dev",
-      "summary": "Outil GenAI pour produire des contenus éditoriaux prêts   publier   partir d’une 4e de couverture (texte ou photo).",
+      "summary": "Outil GenAI pour produire des contenus éditoriaux prêts à publier à partir d’une 4e de couverture (texte ou photo).",
       "tech": ["Next.js App Router", "OpenAI API", "OCR", "TypeScript"],
       "context": [
         "Cas d’usage « métier » : libraires / bibliothécaires / éditeurs.",
@@ -465,8 +531,10 @@
         "Fastify",
         "Express",
         "REST APIs",
-        "Auth (NextAuth/JWT)",
-        "Server Actions / Route Handlers"
+        "Auth (Better Auth / NextAuth / JWT)",
+        "Server Actions / Route Handlers",
+        "Stripe (PaymentIntent / webhooks)",
+        "Uploads + images (Sharp)"
       ]
     },
     {
@@ -489,7 +557,7 @@
         "SSL (Let’s Encrypt)",
         "PM2",
         "Hardening « pragmatique »",
-        "Brevo API (email transactionnel)"
+        "Brevo API (transactionnel + newsletters)"
       ]
     },
     {
