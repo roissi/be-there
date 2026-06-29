@@ -205,7 +205,7 @@ export function HeroSection({
               <div className="text-sm text-neutral-500 dark:text-neutral-400">
                 {contactTitle}
               </div>
-              <div className="mt-1 font-semibold">
+              <div className="mt-1 text-sm font-semibold sm:text-base">
                 contact@cyrildegraeve.dev
               </div>
               <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">
