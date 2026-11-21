@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, type ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ThemeToggle from '@/components/theme-toggle';
@@ -43,6 +43,20 @@ export function TopBar({
 }) {
   const mobileMenu = useRef<HTMLDetailsElement>(null);
   const mobileSummary = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    function closeOnOutsideClick(event: MouseEvent) {
+      const menu = mobileMenu.current;
+
+      if (menu?.open && !event.composedPath().includes(menu)) {
+        menu.open = false;
+      }
+    }
+
+    document.addEventListener('click', closeOnOutsideClick, true);
+    return () => document.removeEventListener('click', closeOnOutsideClick, true);
+  }, []);
+
   const links = [
     { href: '#case-studies', label: nav.caseStudies },
     { href: '#experiences', label: nav.experiences },
