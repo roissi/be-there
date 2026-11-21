@@ -1,12 +1,13 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ThemeToggle from '@/components/theme-toggle';
 import {
   ArrowUpRight,
   Calendar,
+  ChevronDown,
   Github,
   Linkedin,
   Mail,
@@ -33,60 +34,88 @@ export function TopBar({
 }: {
   topline: string;
   nav: {
+    sections: string;
     experiences: string;
     skills: string;
     caseStudies: string;
     contact: string;
   };
 }) {
+  const mobileMenu = useRef<HTMLDetailsElement>(null);
+  const mobileSummary = useRef<HTMLElement>(null);
+  const links = [
+    { href: '#case-studies', label: nav.caseStudies },
+    { href: '#experiences', label: nav.experiences },
+    { href: '#competences', label: nav.skills },
+    { href: '#contact', label: nav.contact },
+  ];
+
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200/60 bg-white/60 backdrop-blur dark:border-neutral-800/60 dark:bg-neutral-950/30">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="relative mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-3 sm:px-6 lg:py-4">
         <div className="flex items-center gap-3">
           <div className="h-2 w-2 rounded-full bg-teal-500" />
           <span className="text-sm font-medium tracking-tight">
             Cyril De Graeve
           </span>
-          <span className="hidden text-sm text-neutral-500 dark:text-neutral-400 sm:inline">
+          <span className="hidden text-sm text-neutral-500 dark:text-neutral-400 xl:inline">
             {topline}
           </span>
         </div>
 
-        <nav className="hidden items-center gap-6 text-sm text-neutral-600 dark:text-neutral-300 md:flex">
-          <a
-            className="hover:text-neutral-900 dark:hover:text-white"
-            href="#experiences"
-          >
-            {nav.experiences}
-          </a>
-          <a
-            className="hover:text-neutral-900 dark:hover:text-white"
-            href="#competences"
-          >
-            {nav.skills}
-          </a>
-          <a
-            className="hover:text-neutral-900 dark:hover:text-white"
-            href="#case-studies"
-          >
-            {nav.caseStudies}
-          </a>
-          <a
-            className="hover:text-neutral-900 dark:hover:text-white"
-            href="#contact"
-          >
-            {nav.contact}
-          </a>
+        <nav aria-label={nav.sections} className="hidden items-center gap-6 text-sm text-neutral-600 dark:text-neutral-300 lg:flex">
+          {links.map(({ href, label }) => (
+            <a key={href} href={href} className="hover:text-neutral-900 dark:hover:text-white">
+              {label}
+            </a>
+          ))}
         </nav>
 
         <div className="flex items-center gap-2">
+          <details
+            ref={mobileMenu}
+            className="group lg:hidden"
+            onKeyDown={(event) => {
+              if (event.key === 'Escape' && mobileMenu.current?.open) {
+                mobileMenu.current.open = false;
+                mobileSummary.current?.focus();
+              }
+            }}
+          >
+            <summary ref={mobileSummary} className="flex min-h-11 cursor-pointer list-none items-center gap-1 rounded-full px-2 text-sm font-medium [&::-webkit-details-marker]:hidden">
+              {nav.sections}
+              <ChevronDown aria-hidden="true" className="h-4 w-4 group-open:rotate-180" />
+            </summary>
+            <nav aria-label={nav.sections} className="absolute inset-x-4 top-full rounded-xl border border-neutral-200 bg-white p-2 shadow-lg dark:border-neutral-700 dark:bg-neutral-900 sm:left-auto sm:right-6 sm:min-w-52">
+              {links.map(({ href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="flex min-h-11 items-center rounded-lg px-3 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                  onClick={() => {
+                    if (mobileMenu.current) mobileMenu.current.open = false;
+                  }}
+                >
+                  {label}
+                </a>
+              ))}
+              <div className="mt-1 flex border-t border-neutral-200 pt-1 dark:border-neutral-700 sm:hidden">
+                <a href="https://www.linkedin.com/in/cyril-de-graeve/" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center rounded-lg px-3 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                  LinkedIn
+                </a>
+                <a href="https://github.com/roissi" target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center rounded-lg px-3 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                  GitHub
+                </a>
+              </div>
+            </nav>
+          </details>
           <LocaleToggle />
           <ThemeToggle />
           <a
             href="https://www.linkedin.com/in/cyril-de-graeve/"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-white"
+            className="hidden rounded-full p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-white sm:inline-flex"
             aria-label="LinkedIn"
           >
             <Linkedin className="h-5 w-5" />
@@ -95,7 +124,7 @@ export function TopBar({
             href="https://github.com/roissi"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-white"
+            className="hidden rounded-full p-2 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-white sm:inline-flex"
             aria-label="GitHub"
           >
             <Github className="h-5 w-5" />
@@ -167,7 +196,7 @@ export function HeroSection({
               {ctaPrimary}
             </PrimaryButton>
             <GhostButton
-              href="#experiences"
+              href="#case-studies"
               icon={<ArrowUpRight className="h-4 w-4" />}
             >
               {ctaSecondary}
@@ -262,10 +291,10 @@ export function ExperiencesSection({
             <Card>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div className="min-w-0">
-                  <div className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <h3 className="text-xl font-semibold">
                     {xp.org}
-                  </div>
-                  <div className="mt-1 text-lg font-semibold tracking-tight">
+                  </h3>
+                  <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">
                     {xp.title}
                   </div>
                   <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">
@@ -361,11 +390,11 @@ export function CaseStudiesSection({
             <Card>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div className="min-w-0">
-                  <div className="text-sm text-neutral-500 dark:text-neutral-400">
-                    {cs.client}
-                  </div>
-                  <div className="mt-1 text-lg font-semibold tracking-tight">
+                  <h3 className="text-xl font-semibold">
                     {cs.name}
+                  </h3>
+                  <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">
+                    {cs.client}
                   </div>
                   <div className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">
                     {cs.period}
@@ -386,6 +415,12 @@ export function CaseStudiesSection({
                   </Link>
                 ) : null}
               </div>
+
+              {cs.outcome[0] && (
+                <p className="mt-4 border-l-2 border-teal-600 pl-3 text-sm font-semibold leading-relaxed dark:border-teal-400">
+                  {cs.outcome[0]}
+                </p>
+              )}
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {cs.tech.map((tt) => (
@@ -427,7 +462,7 @@ export function CaseStudiesSection({
                     {columnOutcome}
                   </div>
                   <ul className="mt-3 space-y-2 text-sm text-neutral-700 dark:text-neutral-200">
-                    {cs.outcome.map((x) => (
+                    {cs.outcome.slice(1).map((x) => (
                       <li key={x} className="flex gap-2">
                         <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
                         <span>{x}</span>

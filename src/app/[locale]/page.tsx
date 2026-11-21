@@ -62,6 +62,7 @@ export default function HomePage() {
           <TopBar
             topline={t('topline')}
             nav={{
+              sections: t('nav.sections'),
               experiences: t('nav.experiences'),
               skills: t('nav.skills'),
               caseStudies: t('nav.caseStudies'),
@@ -103,6 +104,16 @@ export default function HomePage() {
             />
 
             <div className="mt-16 space-y-16 sm:mt-20">
+              <CaseStudiesSection
+                eyebrow={t('sections.caseStudies.eyebrow')}
+                title={t('sections.caseStudies.title')}
+                viewLabel={t('caseStudy.view')}
+                columnContext={t('caseStudy.columns.context')}
+                columnDeliverables={t('caseStudy.columns.deliverables')}
+                columnOutcome={t('caseStudy.columns.outcome')}
+                caseStudies={caseStudies}
+              />
+
               <ExperiencesSection
                 eyebrow={t('sections.experiences.eyebrow')}
                 title={t('sections.experiences.title')}
@@ -113,16 +124,6 @@ export default function HomePage() {
                 eyebrow={t('sections.skills.eyebrow')}
                 title={t('sections.skills.title')}
                 groups={skillGroups}
-              />
-
-              <CaseStudiesSection
-                eyebrow={t('sections.caseStudies.eyebrow')}
-                title={t('sections.caseStudies.title')}
-                viewLabel={t('caseStudy.view')}
-                columnContext={t('caseStudy.columns.context')}
-                columnDeliverables={t('caseStudy.columns.deliverables')}
-                columnOutcome={t('caseStudy.columns.outcome')}
-                caseStudies={caseStudies}
               />
 
               <ContactSection

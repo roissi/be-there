@@ -8,6 +8,7 @@
   },
 
   "nav": {
+    "sections": "Sections",
     "experiences": "Experience",
     "skills": "Skills",
     "caseStudies": "Case studies",
@@ -20,7 +21,7 @@
     "headline": "I build web products that are <solid>robust</solid>, <fast>fast</fast> and <clean>clean</clean>.",
     "lead": "Full-stack JavaScript developer. Specialised in high-standards builds and redesigns: Next.js App Router, bespoke back-offices, databases, e-commerce (Stripe), performance/SEO, and VPS deployments. Web + mobile web.",
     "ctaPrimary": "Book a slot",
-    "ctaSecondary": "View experience",
+    "ctaSecondary": "View case studies",
     "stats": [
       { "k": "5+ yrs", "v": "React / Node" },
       { "k": "App Router", "v": "Next.js" },
@@ -57,6 +58,33 @@
   },
   "footer": "© {year} Cyril De Graeve · React / Next.js / Node · Paris",
   "experiences": [
+    {
+      "title": "Full-stack JavaScript Developer & Product Architect",
+      "org": "Librairie Anne Lamort",
+      "period": "2026",
+      "link": {
+        "label": "Website",
+        "href": "https://anne-lamort.com/"
+      },
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "Better Auth",
+        "Stripe",
+        "Brevo API",
+        "Caddy",
+        "systemd"
+      ],
+      "points": [
+        "Designed and built the public website and internal tools for an antiquarian bookshop in a single Next.js application.",
+        "Migrated the book collection and 5,779 customer records from FileMaker to PostgreSQL, carrying over photographs and preserving historical catalogue references.",
+        "Built a bespoke back office for managing stock, customers and printed catalogue mailings, from selecting recipients to generating address labels and recording dispatches.",
+        "Built a searchable public catalogue with bibliographic records, Stripe checkout and temporary reservations for one-of-a-kind copies.",
+        "Integrated Brevo for double opt-in newsletter sign-ups and subscriber synchronisation."
+      ]
+    },
     {
       "title": "Full-stack JavaScript Developer & Product Architect",
       "org": "Hugues de Bourbon",
@@ -388,6 +416,28 @@
     }
   ],
   "caseStudies": [
+    {
+      "name": "Librairie Anne Lamort",
+      "client": "FileMaker migration and printed catalogue mailings",
+      "period": "2026",
+      "href": "https://anne-lamort.com/",
+      "summary": "From FileMaker to a bespoke application for an antiquarian bookshop. The book collection and customer directory migrated to PostgreSQL now support the preparation and tracking of printed catalogue mailings.",
+      "tech": ["Next.js (App Router)", "TypeScript", "PostgreSQL", "Drizzle ORM", "FileMaker"],
+      "context": [
+        "Migrate the book collection, photographs and customer directory while preserving the bookshop’s historical references and records.",
+        "Connect the selection of books for each printed catalogue with recipient selection and mailing history."
+      ],
+      "build": [
+        "Repeatable, transactional PostgreSQL imports with data validation and checks that photographs matched their book records.",
+        "Back office for compiling catalogues, selecting recipients, reviewing addresses and generating Word sheets of address labels.",
+        "Confirmed dispatches recorded in the relevant customer histories."
+      ],
+      "outcome": [
+        "5,779 FileMaker customer records imported and verified in production.",
+        "Verified that rerunning the customer import created no duplicates and left previously imported records intact.",
+        "The bookshop can prepare printed catalogue mailings and review their history in one place."
+      ]
+    },
     {
       "name": "Hugues de Bourbon",
       "client": "Complete business platform + e-commerce + back-office",

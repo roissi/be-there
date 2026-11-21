@@ -8,6 +8,7 @@
   },
 
   "nav": {
+    "sections": "Sections",
     "experiences": "Expériences",
     "skills": "Compétences",
     "caseStudies": "Case studies",
@@ -20,7 +21,7 @@
     "headline": "Je conçois des produits web <solid>solides</solid>, <fast>rapides</fast> et <clean>propres</clean>.",
     "lead": "Développeur Fullstack JavaScript. Spécialisé dans les créations et refontes « haut niveau d’exigence » : Next.js App Router, back-offices sur-mesure, bases de données, e-commerce (Stripe), perf/SEO, déploiement VPS. Web + web mobile.",
     "ctaPrimary": "Prendre un créneau",
-    "ctaSecondary": "Voir les expériences",
+    "ctaSecondary": "Voir les études de cas",
     "stats": [
       { "k": "5+ ans", "v": "React / Node" },
       { "k": "App Router", "v": "Next.js" },
@@ -60,6 +61,33 @@
   },
   "footer": "© {year} Cyril De Graeve · React / Next.js / Node · Paris",
   "experiences": [
+    {
+      "title": "Développeur Fullstack JavaScript & Architecte Produit",
+      "org": "Librairie Anne Lamort",
+      "period": "2026",
+      "link": {
+        "label": "Website",
+        "href": "https://anne-lamort.com/"
+      },
+      "tech": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "Better Auth",
+        "Stripe",
+        "Brevo API",
+        "Caddy",
+        "systemd"
+      ],
+      "points": [
+        "Conception et développement du site public et de l’application métier d’une librairie de livres anciens, réunis dans une seule application Next.js.",
+        "Migration du fonds FileMaker et de 5 779 fiches clients vers PostgreSQL, avec reprise des photos et conservation des références historiques.",
+        "Back-office sur mesure pour gérer le fonds, les clients et la diffusion des catalogues papier, de la sélection des destinataires à la génération d’étiquettes et à l’historique des envois.",
+        "Catalogue public avec recherche et fiches bibliographiques, tunnel de commande Stripe et gestion des réservations temporaires pour les exemplaires uniques.",
+        "Intégration Brevo pour l’inscription à la newsletter avec double confirmation et la synchronisation des abonnés."
+      ]
+    },
     {
       "title": "Développeur Fullstack JavaScript & Architecte Produit",
       "org": "Hugues de Bourbon",
@@ -388,6 +416,28 @@
     }
   ],
   "caseStudies": [
+    {
+      "name": "Librairie Anne Lamort",
+      "client": "Migration FileMaker et gestion des catalogues papier",
+      "period": "2026",
+      "href": "https://anne-lamort.com/",
+      "summary": "De FileMaker à une application métier pour librairie ancienne. Le fonds et le carnet clients repris dans PostgreSQL servent à préparer et à suivre les envois de catalogues papier.",
+      "tech": ["Next.js (App Router)", "TypeScript", "PostgreSQL", "Drizzle ORM", "FileMaker"],
+      "context": [
+        "Reprendre les ouvrages, leurs photos et le carnet clients en préservant les références et l’historique de la librairie.",
+        "Relier le choix des ouvrages d’un catalogue papier, la sélection des destinataires et le suivi des envois."
+      ],
+      "build": [
+        "Scripts d’import transactionnels et rejouables vers PostgreSQL, avec contrôle des données et rapprochement des photos avec leurs ouvrages.",
+        "Back-office pour composer les catalogues, sélectionner les destinataires, vérifier les adresses et générer les planches d’étiquettes Word.",
+        "Enregistrement des envois confirmés dans l’historique des fiches clients concernées."
+      ],
+      "outcome": [
+        "5 779 fiches clients FileMaker importées et contrôlées en production.",
+        "Rejeu de l’import clients validé sans doublon ni modification des fiches déjà importées.",
+        "Préparation des envois papier et consultation de leur historique depuis le même outil."
+      ]
+    },
     {
       "name": "Hugues de Bourbon",
       "client": "Plateforme métier complète + e-commerce + back-office",
